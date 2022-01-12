@@ -11,13 +11,6 @@
   background: rgb(112, 112, 112);
 }
 
-.show__name {
-  padding: 1rem 2rem;
-  margin-top: -44px;
-  color: black;
-  background-color: rgb(71, 182, 216);
-  border-radius: 12px;
-}
 
 .divider__horz {
   border-top: 2px solid #bbb;

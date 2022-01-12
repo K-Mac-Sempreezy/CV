@@ -1,0 +1,9 @@
+.applicant {
+  display: flex;
+  flex-direction: row;
+  padding: 0 2rem;
+  margin-top: -44px;
+  color: black;
+  background-color: rgb(71, 182, 216);
+  border-radius: 12px;
+}

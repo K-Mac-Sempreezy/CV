@@ -1,0 +1,22 @@
+/* import icons from somewhere: profile, work experience, education, skills */
+
+.icon {
+  width: 14%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.icon__circle {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgb(71, 182, 216);
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+}
+
+.icon__shape {
+  font-size: 12px;
+}

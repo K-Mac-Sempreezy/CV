@@ -6,22 +6,24 @@ import SectionHeading from './section-heading';
 import Profile from './profile';
 import Contact from './contact';
 import './show-resume.css';
+import Applicant from './applicant';
 
 const ShowResume = props => {
+  const DUMMY_PROFILE =
+    'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
+  const DUMMY_EXPERIENCE =
+    'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.';
+
   return (
     <main className='show'>
       <div className='show__top'></div>
-      <h2 className='show__name'>FirstName LastName</h2>
+      <Applicant firstName={'FirstName'} lastName={'LastName'}/>
       <Contact address={'Address'} phone={'Phone'} email={'Email'} />
       <hr className='divider__horz' />
       <section className='show__info'>
         <div className='show__info-left'>
           <SectionHeading icon={'profile'} section={'Profile'} />
-          <Profile
-            text={
-              'Results-driven and motivated Software Engineer with demonstrated expnn improvin software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.'
-            }
-          />
+          <Profile text={DUMMY_PROFILE} />
           <div className='show__experience'>
             <SectionHeading
               icon={'experience'}
@@ -32,9 +34,7 @@ const ShowResume = props => {
               location={'STUTTGART, GERMANY'}
               title={'Software Engineer'}
               name={'Critical Alert, Inc.'}
-              text={
-                'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.'
-              }
+              text={DUMMY_EXPERIENCE}
             />
           </div>
         </div>

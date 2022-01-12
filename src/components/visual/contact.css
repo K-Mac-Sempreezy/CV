@@ -1,4 +1,5 @@
 .contact {
   display: inline-flex;
   flex-direction: row;
+  margin-top: 1rem;
 }

@@ -1,8 +1,9 @@
 .parent {
   width: 100vw;
   min-width: 100rem;
-  height: 100vh;
+  /* height: 100vh; */
   min-height: 50rem;
+  max-height: 1000px;
   display: grid;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;

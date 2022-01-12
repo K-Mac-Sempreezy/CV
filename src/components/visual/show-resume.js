@@ -4,6 +4,8 @@ import Icon from '../ui-elements/icon';
 import DateLocation from './date-location';
 import Title from './title';
 import Subtitle from './subtitle';
+// import BulletPoint from './bullet-point';
+import Experience from './experience';
 import './show-resume.css';
 
 const ShowResume = props => {
@@ -38,23 +40,28 @@ const ShowResume = props => {
             <div>
               <Icon>Experience Icon</Icon>
               <div>Work Experience</div>
-              <div>
-                <DateLocation
-                >
-                  Date/Location
-                </DateLocation>
-                <Title>Work Title</Title>
-                <Subtitle>Work Name</Subtitle>
-                <div>
-                  <div>Bullet Point</div>
-                  <div>
-                    Developed and implemented tools which increased
-                    the level of automation and efficiency of
-                    installing and configuring servers.
-                  </div>
-                </div>
-              </div>
             </div>
+            <Experience
+              date={props.date}
+              location={props.location}
+              title={props.title}
+              subtitle={props.subtitle}
+              text={
+                'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.'
+              }
+            />
+            {/* <div>
+                <DateLocation>
+                  06/2017 - 03/2019 STUTTGART, GERMANY
+                </DateLocation>
+                <Title>Software Engineer</Title>
+                <Subtitle>Critical Alert, Inc.</Subtitle>
+                <BulletPoint>
+                  Developed and implemented tools which increased the
+                  level of automation and efficiency of installing and
+                  configuring servers.
+                </BulletPoint>
+              </div> */}
           </div>
         </div>
         <hr className='divider__vert' />

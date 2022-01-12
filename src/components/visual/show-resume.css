@@ -44,8 +44,7 @@
   grid-template-columns: 49fr 2fr 49fr;
 }
 
-/* .show__block-left {
-}
-
+.show__block-left, 
 .show__block-right {
-} */
+  margin: 1rem;
+}

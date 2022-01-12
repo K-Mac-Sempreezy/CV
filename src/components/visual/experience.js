@@ -2,7 +2,7 @@ import React from 'react';
 
 import DateLocation from './date-location';
 import Title from './title';
-import Subtitle from './subtitle';
+import Name from './name';
 import BulletPoint from './bullet-point';
 
 const Experience = props => {
@@ -10,7 +10,7 @@ const Experience = props => {
     <React.Fragment>
       <DateLocation date={props.date} location={props.location} />
       <Title title={props.title} />
-      <Subtitle subtitle={props.subtitle} />
+      <Name name={props.name} />
       <BulletPoint text={props.text} />
     </React.Fragment>
   );

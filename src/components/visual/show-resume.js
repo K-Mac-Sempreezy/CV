@@ -3,10 +3,11 @@ import React from 'react';
 import Icon from '../ui-elements/icon';
 import DateLocation from './date-location';
 import Title from './title';
-import Subtitle from './subtitle';
+import Subtitle from './name';
 // import BulletPoint from './bullet-point';
 import Experience from './experience';
 import './show-resume.css';
+import SectionHeading from './section-heading';
 
 const ShowResume = props => {
   return (
@@ -37,31 +38,18 @@ const ShowResume = props => {
             </div>
           </div>
           <div className='show__experience'>
-            <div>
-              <Icon>Experience Icon</Icon>
-              <div>Work Experience</div>
-            </div>
+            <SectionHeading icon={'experience'}>
+              Work Experience
+            </SectionHeading>
             <Experience
-              date={props.date}
-              location={props.location}
-              title={props.title}
-              subtitle={props.subtitle}
+              date={'06/2017 - 03/2019'}
+              location={'STUTTGART, GERMANY'}
+              title={'Software Engineer'}
+              name={'Critical Alert, Inc.'}
               text={
                 'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.'
               }
             />
-            {/* <div>
-                <DateLocation>
-                  06/2017 - 03/2019 STUTTGART, GERMANY
-                </DateLocation>
-                <Title>Software Engineer</Title>
-                <Subtitle>Critical Alert, Inc.</Subtitle>
-                <BulletPoint>
-                  Developed and implemented tools which increased the
-                  level of automation and efficiency of installing and
-                  configuring servers.
-                </BulletPoint>
-              </div> */}
           </div>
         </div>
         <hr className='divider__vert' />

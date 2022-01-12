@@ -17,26 +17,24 @@ const ShowResume = props => {
   return (
     <main className='show'>
       <div className='show__top'></div>
-      <Applicant firstName={'FirstName'} lastName={'LastName'}/>
+      <Applicant firstName={'Kristian'} lastName={'MacSempreezy'} />
       <Contact address={'Address'} phone={'Phone'} email={'Email'} />
       <hr className='divider__horz' />
       <section className='show__info'>
         <div className='show__info-left'>
           <SectionHeading icon={'profile'} section={'Profile'} />
           <Profile text={DUMMY_PROFILE} />
-          <div className='show__experience'>
-            <SectionHeading
-              icon={'experience'}
-              section={'Work Experience'}
-            />
-            <Experience
-              date={'06/2017 - 03/2019'}
-              location={'STUTTGART, GERMANY'}
-              title={'Software Engineer'}
-              name={'Critical Alert, Inc.'}
-              text={DUMMY_EXPERIENCE}
-            />
-          </div>
+          <SectionHeading
+            icon={'experience'}
+            section={'Work Experience'}
+          />
+          <Experience
+            date={'06/2017 - 03/2019'}
+            location={'STUTTGART, GERMANY'}
+            title={'Software Engineer'}
+            name={'Critical Alert, Inc.'}
+            text={DUMMY_EXPERIENCE}
+          />
         </div>
         <hr className='divider__vert' />
         <div className='show__info-right'>

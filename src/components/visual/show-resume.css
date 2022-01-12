@@ -27,7 +27,7 @@
 
 .show__info {
   width: 100%;
-  height: 100%;
+  min-height: 100%;
   display: grid;
   grid-template-columns: 49fr 2fr 49fr;
 }
@@ -35,8 +35,5 @@
 .show__info-left, 
 .show__info-right {
   margin: 1rem;
-}
-
-.show__profile-text {
-  margin-left: 2rem;
+  height: 650px;
 }

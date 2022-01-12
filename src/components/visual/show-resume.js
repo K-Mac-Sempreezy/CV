@@ -1,13 +1,10 @@
 import React from 'react';
 
-import Icon from '../ui-elements/icon';
-import DateLocation from './date-location';
-import Title from './title';
-import Subtitle from './name';
-// import BulletPoint from './bullet-point';
 import Experience from './experience';
-import './show-resume.css';
+import Education from './education';
 import SectionHeading from './section-heading';
+import './show-resume.css';
+import Profile from './profile';
 
 const ShowResume = props => {
   return (
@@ -24,23 +21,19 @@ const ShowResume = props => {
       <hr className='divider__horz' />
       <section className='show__block'>
         <div className='show__block-left'>
-          <div className='show__profile'>
-            <Icon>Profile Icon</Icon>
-            <div>Profile</div>
-            <div>
-              Results-driven and motivated Software Engineer with
-              demonstrated expnn improvin software pertormance,
-              testing and updating existing software, and developing
-              new software functionalities. Offers proven track record
-              of extraordinary achievements, strong attention to
-              detail, and ability to finish projects on schedule and
-              within budget.
-            </div>
+          <div>
+            <SectionHeading icon={'profile'} section={'Profile'} />
+            <Profile
+              text={
+                'Results-driven and motivated Software Engineer with demonstrated expnn improvin software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.'
+              }
+            />
           </div>
           <div className='show__experience'>
-            <SectionHeading icon={'experience'}>
-              Work Experience
-            </SectionHeading>
+            <SectionHeading
+              icon={'experience'}
+              section={'Work Experience'}
+            />
             <Experience
               date={'06/2017 - 03/2019'}
               location={'STUTTGART, GERMANY'}
@@ -55,19 +48,20 @@ const ShowResume = props => {
         <hr className='divider__vert' />
         <div className='show__block-right'>
           <div className='show__education'>
-            <div>
-              <Icon>Education Icon</Icon>
-              <div>Education</div>
-              <DateLocation>Date/Location</DateLocation>
-              <Title>Degree Title</Title>
-              <Subtitle>School Name</Subtitle>
-            </div>
+            <SectionHeading
+              icon={'education'}
+              section={'Education'}
+            />
+            <Education
+              date={'09/2014 - 05/2015'}
+              location={'OXFORD, UNITED KINGDOM'}
+              title={'Software Engineer'}
+              name={'University of Oxford'}
+              highlights={'Highlights'}
+            />
           </div>
           <div className='show__skills'>
-            <div>
-              <Icon>Skills Icon</Icon>
-              <div>Skills</div>
-            </div>
+            <SectionHeading icon={'skills'} section={'Skills'} />
           </div>
         </div>
       </section>

@@ -1,0 +1,6 @@
+.section-heading {
+  display: flex;
+  flex-direction: row;
+  justify-self: flex-start;
+  margin-bottom: 1rem;
+}

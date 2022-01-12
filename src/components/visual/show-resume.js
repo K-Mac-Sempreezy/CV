@@ -3,32 +3,25 @@ import React from 'react';
 import Experience from './experience';
 import Education from './education';
 import SectionHeading from './section-heading';
-import './show-resume.css';
 import Profile from './profile';
+import Contact from './contact';
+import './show-resume.css';
 
 const ShowResume = props => {
   return (
     <main className='show'>
       <div className='show__top'></div>
-      <h2 className='show__name'>Show Resume Side</h2>
-      <section className='show__contact'>
-        <div>Address</div>
-        <div>|</div>
-        <div>Phone</div>
-        <div>|</div>
-        <div>Email</div>
-      </section>
+      <h2 className='show__name'>FirstName LastName</h2>
+      <Contact address={'Address'} phone={'Phone'} email={'Email'} />
       <hr className='divider__horz' />
-      <section className='show__block'>
-        <div className='show__block-left'>
-          <div>
-            <SectionHeading icon={'profile'} section={'Profile'} />
-            <Profile
-              text={
-                'Results-driven and motivated Software Engineer with demonstrated expnn improvin software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.'
-              }
-            />
-          </div>
+      <section className='show__info'>
+        <div className='show__info-left'>
+          <SectionHeading icon={'profile'} section={'Profile'} />
+          <Profile
+            text={
+              'Results-driven and motivated Software Engineer with demonstrated expnn improvin software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.'
+            }
+          />
           <div className='show__experience'>
             <SectionHeading
               icon={'experience'}
@@ -46,7 +39,7 @@ const ShowResume = props => {
           </div>
         </div>
         <hr className='divider__vert' />
-        <div className='show__block-right'>
+        <div className='show__info-right'>
           <div className='show__education'>
             <SectionHeading
               icon={'education'}

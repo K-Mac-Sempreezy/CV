@@ -1,0 +1,4 @@
+.contact {
+  display: inline-flex;
+  flex-direction: row;
+}

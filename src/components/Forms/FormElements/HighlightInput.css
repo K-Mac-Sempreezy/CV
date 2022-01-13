@@ -1,0 +1,11 @@
+.highlight {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+}
+
+.highlight input {
+  padding-right: 90px;
+  font-size: 14px;
+  width: 100%;
+}

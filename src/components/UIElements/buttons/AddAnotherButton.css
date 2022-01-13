@@ -1,0 +1,20 @@
+.add-another-button {
+  position: absolute;
+  font-size: 14px;
+  right: 2px;  
+  top: 7px;
+  width: 10rem;
+  height: 2rem;
+  border: 0;
+  background: 0;
+  color: rgb(124, 124, 139);
+  /* z-index: 1; */
+}
+
+.add-another-button:hover {
+  color: blue;
+}
+
+.add-another-button:active {
+  color: rgb(199, 57, 235);
+}

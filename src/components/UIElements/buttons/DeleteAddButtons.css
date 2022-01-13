@@ -1,0 +1,36 @@
+.buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  margin-bottom: 2rem;
+}
+
+.buttons button {
+  border-radius: 1rem;
+  border: 0;
+  background: white;
+  margin-right: 2rem;
+  width: 7rem;
+  height: 2rem;
+}
+
+.delete:hover {
+  color: red;
+  background: rgb(255, 224, 224);
+}
+
+.add:hover {
+  color: blue;
+  background: rgb(224, 224, 255);
+}
+
+.delete:active {
+  color: red;
+  background: rgb(255, 241, 241);
+}
+
+.add:active {
+  color: blue;
+  background: rgb(242, 242, 255);
+}

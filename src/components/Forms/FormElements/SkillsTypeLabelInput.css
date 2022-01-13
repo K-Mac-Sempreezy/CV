@@ -1,10 +1,4 @@
-.personal {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 2rem;
-}
-
-.personal input {
+.skill-type-input {
   font-size: 14px;
   height: 2rem;
   border-radius: 1rem;
@@ -12,4 +6,5 @@
   margin: 0.4rem 0;
   padding: 0 1rem;
   outline: none;
+  width: 67%;
 }

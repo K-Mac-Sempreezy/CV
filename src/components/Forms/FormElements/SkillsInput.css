@@ -1,10 +1,11 @@
-.personal {
+.skill {
   display: flex;
   flex-direction: column;
-  margin-bottom: 2rem;
+  justify-content: space-between;
+  width: 100%;
 }
 
-.personal input {
+.skill input {
   font-size: 14px;
   height: 2rem;
   border-radius: 1rem;
@@ -12,4 +13,5 @@
   margin: 0.4rem 0;
   padding: 0 1rem;
   outline: none;
-}
+  width: 67%;
+ }

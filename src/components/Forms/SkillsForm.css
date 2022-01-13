@@ -1,0 +1,5 @@
+.skills-form {
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 250px;
+}

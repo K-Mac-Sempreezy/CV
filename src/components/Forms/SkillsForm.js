@@ -12,12 +12,10 @@ const SkillsForm = props => {
         placeholder='Skill type'
       />
       <SkillsInput
-        className={'skills-form__name'}
         placeholder={'Skill name'}
         buttonLabel={'+ Add another'}
       />
       <SkillsInput
-        className={'skills-form__level'}
         placeholder={'Skill level'}
         buttonLabel={'Graph'}
       />

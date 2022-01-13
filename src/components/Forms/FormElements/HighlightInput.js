@@ -8,7 +8,7 @@ const HighlightInput = props => {
     <div className='section-form__highlight'>
       <input type='text' placeholder={props.highlight} />
       <Button
-        className={'section-form__highlight__button'}
+        className='section-form__highlight__button'
         label={'+ Add another'}
       />
     </div>

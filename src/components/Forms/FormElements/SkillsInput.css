@@ -19,9 +19,14 @@
 
 .skills__button {
   font-size: 14px;
+  color: gray;
   position: absolute;
   background: 0;
   border: 0;
   right: 0;
   padding-right: 1rem;
 } 
+
+.skills__button:hover {
+  color: blue;
+}

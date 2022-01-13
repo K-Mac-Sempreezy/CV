@@ -7,10 +7,12 @@ const SkillsInput = props => {
   return (
     <div className='skills'>
       <input type='text' placeholder={props.placeholder} />
-      <Button className={`skills__button ${props.className}`} label={props.buttonLabel} />
+      <Button
+        className={`skills__button`}
+        label={props.buttonLabel}
+      />
     </div>
   );
 };
 
 export default SkillsInput;
-

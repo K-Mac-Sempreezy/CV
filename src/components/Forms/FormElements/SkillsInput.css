@@ -1,9 +1,12 @@
-.skills-input {
+.skills {
+  position: relative;
   display: flex;
+  align-items: center;
   flex-direction: row;
+  width: 67%;
 }
 
-.skills__input input {
+.skills input {
   font-size: 14px;
   height: 2rem;
   border-radius: 1rem;
@@ -11,5 +14,14 @@
   margin: 0.4rem 0;
   padding: 0 1rem;
   outline: none;
-  width: 67%;
+  width: 100%;
 }
+
+.skills__button {
+  font-size: 14px;
+  position: absolute;
+  background: 0;
+  border: 0;
+  right: 0;
+  padding-right: 1rem;
+} 

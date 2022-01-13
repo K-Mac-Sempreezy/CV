@@ -1,17 +1,15 @@
 import React from 'react';
 
 import Button from '../../UIElements/Button';
+import HighlightInput from './HighlightInput';
 import './SectionForm.css';
 
 const SectionForm = props => {
   return (
     <div className='section-form'>
-      <input type='text' placeholder={props.title} />
-      <input type='text' placeholder={props.establishment} />
-      <div className='section-form__highlight'>
-        <input placeholder={props.highlight} />
-        <Button className={'section-form__highlight__button'} label={'+ Add another'}/>
-      </div>
+      <input className='section-form__input' type='text' placeholder={props.title} />
+      <input className='section-form__input' type='text' placeholder={props.establishment} />
+      <HighlightInput highlight={props.highlight} />
       <div className='section-form__buttons'>
         <Button
           className={'section-form__delete'}

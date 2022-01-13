@@ -2,17 +2,18 @@ import React from 'react';
 
 import DatePicker from './FormElements/DatePicker';
 import SectionForm from './FormElements/SectionForm';
+import './ExperienceForm.css';
 
 const ExperienceForm = props => {
   return (
-    <React.Fragment>
+    <div className='experience'>
       <DatePicker />
       <SectionForm
         title={'Job Title'}
         establishment={'Company Name'}
         highlight={'Experience highlight'}
       />
-    </React.Fragment>
+    </div>
   );
 };
 

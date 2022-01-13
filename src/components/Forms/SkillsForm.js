@@ -1,5 +1,5 @@
 import React from 'react';
-import SkillsInput from './FormElements/SkillsInput';
+import SkillsExampleInputs from './FormElements/SkillsExampleInputs';
 
 import SkillsTypeLabelInput from './FormElements/SkillsTypeLabelInput';
 import './SkillsForm.css';
@@ -8,7 +8,7 @@ const SkillsForm = props => {
   return (
     <div className='skills-form'>
       <SkillsTypeLabelInput />
-      <SkillsInput />
+      <SkillsExampleInputs />
     </div>
   );
 };

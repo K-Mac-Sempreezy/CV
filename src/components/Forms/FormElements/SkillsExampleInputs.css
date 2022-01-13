@@ -14,4 +14,18 @@
   padding: 0 1rem;
   outline: none;
   width: 67%;
- }
+}
+
+.skill__example, .skill__level {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+
+}
+
+.skill__button {
+  z-index: 1;
+  background: 0;
+  position: absolute;
+  right: 0px;
+}

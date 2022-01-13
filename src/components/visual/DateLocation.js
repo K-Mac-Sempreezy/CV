@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './date-location.css';
+import './DateLocation.css';
 
 const DateLocation = props => {
   return (

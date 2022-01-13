@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './edit-resume.css';
+import './EditResume.css';
 
 const EditResume = props => {
   return (
@@ -19,16 +19,20 @@ const EditResume = props => {
           <div className='edit__date-container'>
             <div className='edit__date'>
               <label for='start'>Start date:</label>
-              <input type='month' id='start' name='start-date' />
+              <input type='date' id='start' name='start-date' />
             </div>
             <div className='edit__date'>
               <label for='end'>End date:</label>
-              <input type='month' id='end' name='end-date' />
+              <input type='date' id='end' name='end-date' />
             </div>
           </div>
           <input type='text' placeholder='Job title' />
           <input type='text' placeholder='Company name' />
           <input type='text' placeholder='City, State' />
+          <div>
+            <input type='text' placeholder='Highlight'/>
+            <button >Add another</button>
+          </div>
         </form>
         <div className='edit__buttons'>
           <button>Delete</button>

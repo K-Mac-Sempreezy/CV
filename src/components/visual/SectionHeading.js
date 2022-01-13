@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Icon from '../UIElements/icons/icon';
-import Heading from './heading';
-import './section-heading.css';
+import Icon from '../UIElements/icons/Icon';
+import Heading from './Heading';
+import './SectionHeading.css';
 
 const SectionHeading = props => {
   return (

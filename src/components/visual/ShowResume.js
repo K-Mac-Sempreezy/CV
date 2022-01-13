@@ -1,12 +1,12 @@
 import React from 'react';
 
-import Experience from './experience';
-import Education from './education';
-import SectionHeading from './section-heading';
-import Profile from './profile';
-import Contact from './contact';
-import './show-resume.css';
-import Applicant from './applicant';
+import Experience from './Experience';
+import Education from './Education';
+import SectionHeading from './SectionHeading';
+import Profile from './Profile';
+import Contact from './Contact';
+import './ShowResume.css';
+import Applicant from './Applicant';
 
 const ShowResume = props => {
   const DUMMY_PROFILE =

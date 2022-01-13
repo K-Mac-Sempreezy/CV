@@ -1,9 +1,9 @@
 import React from 'react';
 
-import DateLocation from './date-location';
-import Title from './title';
-import Name from './name';
-import BulletPoint from './bullet-point';
+import DateLocation from './DateLocation';
+import Title from './Title';
+import Name from './Name';
+import BulletPoint from './BulletPoint';
 
 const Experience = props => {
   return (

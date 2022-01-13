@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './bullet-point.css';
+import './BulletPoint.css';
 
 const BulletPoint = props => {
   return (

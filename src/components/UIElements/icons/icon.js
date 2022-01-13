@@ -1,10 +1,10 @@
 import React from 'react';
 
-import UserIcon from './user-icon';
-import SkillsIcon from './skills-icon';
-import EducationIcon from './education-icon';
-import ExperienceIcon from './experience-icon';
-import './icon.css';
+import UserIcon from './UserIcon';
+import SkillsIcon from './SkillsIcon';
+import EducationIcon from './EducationIcon';
+import ExperienceIcon from './ExperienceIcon';
+import './Icon.css';
 
 const Icon = props => {
   const iconType = () => {

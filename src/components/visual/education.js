@@ -1,7 +1,8 @@
 import React from 'react';
-import DateLocation from './date-location';
-import Title from './title';
-import Name from './name';
+
+import DateLocation from './DateLocation';
+import Title from './Title';
+import Name from './Name';
 
 const Education = props => {
   return (

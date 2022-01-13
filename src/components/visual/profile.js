@@ -1,6 +1,6 @@
 import React from 'react';
 
-import './profile.css';
+import './Profile.css';
 
 const Profile = props => {
   return <div className='profile'>{props.text}</div>;

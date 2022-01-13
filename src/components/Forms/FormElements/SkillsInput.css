@@ -1,10 +1,9 @@
-.skills-form {
+.skills-input {
   display: flex;
-  flex-direction: column;
-  padding-bottom: 250px;
+  flex-direction: row;
 }
 
-.skills-form__label {
+.skills__input input {
   font-size: 14px;
   height: 2rem;
   border-radius: 1rem;

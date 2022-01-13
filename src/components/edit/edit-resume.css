@@ -1,4 +1,33 @@
 .edit {
   display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
   height: 100vh;
+  margin: 2rem;
+}
+
+.edit__form-personal {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit__form-experience {
+  display: flex;
+  flex-direction: column;
+}
+
+.edit__date-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.edit__date {
+  margin-right: 24px;
+}
+
+.edit__buttons {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
 }

@@ -5,9 +5,12 @@ import './applicant.css';
 const Applicant = props => {
   return (
     <div className='applicant'>
-      <h2>{props.firstName}</h2>
-      <div>&nbsp;</div>
-      <h2>{props.lastName}</h2>
+      <div className='applicant__name'>
+        <div>{props.firstName}</div>
+        <div>&nbsp;</div>
+        <div>{props.lastName}</div>
+      </div>
+      <div className='applicant__title'>{props.title}</div>
     </div>
   );
 };

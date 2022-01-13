@@ -17,7 +17,7 @@ const ShowResume = props => {
   return (
     <main className='show'>
       <div className='show__top'></div>
-      <Applicant firstName={'Kristian'} lastName={'MacSempreezy'} />
+      <Applicant firstName={'Kristian'} lastName={'MacSempreezy'} title={'Software Engineer'} />
       <Contact address={'Address'} phone={'Phone'} email={'Email'} />
       <hr className='divider__horz' />
       <section className='show__info'>

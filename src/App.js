@@ -10,7 +10,7 @@ import './App.css'
 const App = props => {
   return (
     <div className='parent'>
-      <EditResume>Edit Resume Side</EditResume>
+      <EditResume />
       <Card className={'resume'}>
         <ShowResume />
       </Card>

@@ -1,0 +1,18 @@
+.contact {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-top: 1rem;
+  font-size: 0.85rem;
+}
+
+.contact__placeholder {
+  color: gray;
+}
+
+.contact__divider {
+  font-weight: 600;
+  color: rgb(71, 182, 216);
+  margin-top: -2px;
+  padding: 0 0.75rem;
+}

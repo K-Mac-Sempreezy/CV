@@ -1,22 +1,28 @@
 import React from 'react';
 
-import EducationForm from '../Forms/EducationForm';
-import ExperienceForm from '../Forms/ExperienceForm';
-import PersonalForm from '../Forms/PersonalForm';
-import SkillsForm from '../Forms/SkillsForm';
+import EducationForm from '../edit/EducationForm';
+import ExperienceForm from '../edit/ExperienceForm';
+import PersonalForm from '../edit/PersonalForm';
+import SkillsForm from '../edit/SkillsForm';
 import './EditResume.css';
 
 const EditResume = props => {
+  const { onData } = props;
+
+  const onDataHandler = (key, value) => {
+    onData(key, value);
+  };
+
   return (
     <div className='edit'>
       <div>Personal Info</div>
-      <PersonalForm />
+      <PersonalForm onData={onDataHandler} />
       <div>Experience</div>
-      <ExperienceForm />
+      <ExperienceForm onData={onDataHandler} />
       <div>Education</div>
-      <EducationForm />
+      <EducationForm onData={onDataHandler} />
       <div>Skills</div>
-      <SkillsForm />
+      <SkillsForm onData={onDataHandler} />
     </div>
   );
 };

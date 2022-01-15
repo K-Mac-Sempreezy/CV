@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../UIElements/Button';
+import Button from '../UIElements/Button';
 import HighlightInput from './HighlightInput';
 import './SectionForm.css';
 

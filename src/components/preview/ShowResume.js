@@ -9,6 +9,15 @@ import './ShowResume.css';
 import Applicant from './Applicant';
 
 const ShowResume = props => {
+  const {
+    applicant__firstName,
+    applicant__lastName,
+    applicant__address,
+    applicant__phone,
+    applicant__email,
+    applicant__jobTitle,
+  } = props.data;
+
   const DUMMY_PROFILE =
     'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
   const DUMMY_EXPERIENCE =
@@ -17,8 +26,16 @@ const ShowResume = props => {
   return (
     <main className='show'>
       <div className='show__top'></div>
-      <Applicant firstName={'Kristian'} lastName={'MacSempreezy'} title={'Software Engineer'} />
-      <Contact address={'Address'} phone={'Phone'} email={'Email'} />
+      <Applicant
+        firstName={applicant__firstName}
+        lastName={applicant__lastName}
+        jobTitle={applicant__jobTitle}
+      />
+      <Contact
+        address={applicant__address}
+        phone={applicant__phone}
+        email={applicant__email}
+      />
       <hr className='divider__horz' />
       <section className='show__info'>
         <div className='show__info-left'>
@@ -33,7 +50,7 @@ const ShowResume = props => {
             location={'STUTTGART, GERMANY'}
             title={'Software Engineer'}
             name={'Critical Alert, Inc.'}
-            text={DUMMY_EXPERIENCE}
+            bullet={DUMMY_EXPERIENCE}
           />
         </div>
         <hr className='divider__vert' />
@@ -56,6 +73,7 @@ const ShowResume = props => {
           </div>
         </div>
       </section>
+      <hr className='divider__horz' />
     </main>
   );
 };

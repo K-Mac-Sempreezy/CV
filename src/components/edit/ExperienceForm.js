@@ -1,7 +1,7 @@
 import React from 'react';
 
-import DatePicker from './FormElements/DatePicker';
-import SectionForm from './FormElements/SectionForm';
+import DatePicker from '../elements/FormElements/DatePicker';
+import SectionForm from '../elements/FormElements/SectionForm';
 import './ExperienceForm.css';
 
 const ExperienceForm = props => {

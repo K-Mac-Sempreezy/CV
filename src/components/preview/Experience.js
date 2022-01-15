@@ -11,7 +11,7 @@ const Experience = props => {
       <DateLocation date={props.date} location={props.location} />
       <Title title={props.title} />
       <Name name={props.name} />
-      <BulletPoint text={props.text} />
+      <BulletPoint text={props.bullet} />
     </React.Fragment>
   );
 };

@@ -1,0 +1,32 @@
+.applicant {
+  display: flex;
+  flex-direction: column;
+  align-items: center;  
+  justify-content: center;
+  background-color: rgb(71, 182, 216);
+  border-radius: 0.75rem;
+  margin-top: -5.2rem;
+  padding: 1rem 2rem;
+  min-width: 15rem;
+  min-height: 7rem;
+  color: black;
+  font-weight: 800;
+}
+
+.applicant__name {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 2rem;
+}
+
+.applicant__title {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  font-size: 1rem;
+}
+
+.applicant__placeholder {
+  color: rgb(33, 83, 98);
+}

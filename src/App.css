@@ -11,4 +11,5 @@
 
 .resume {
   margin: 1rem 5rem;
+  max-height: 1000px;
 }

@@ -1,6 +1,6 @@
 import React from 'react';
 
-import SkillsInput from './FormElements/SkillsInput';
+import SkillsInput from '../elements/FormElements/SkillsInput';
 import './SkillsForm.css';
 
 const SkillsForm = props => {

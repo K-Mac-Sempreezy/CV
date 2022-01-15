@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Icon from '../UIElements/icons/Icon';
+import Icon from '../elements/UIElements/icons/Icon';
 import Heading from './Heading';
 import './SectionHeading.css';
 

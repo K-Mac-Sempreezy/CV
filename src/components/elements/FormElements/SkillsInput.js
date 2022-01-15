@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Button from '../../UIElements/Button';
+import Button from '../UIElements/Button';
 import './SkillsInput.css';
 
 const SkillsInput = props => {

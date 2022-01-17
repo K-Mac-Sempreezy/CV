@@ -25,10 +25,11 @@
   font-size: 14px;
   position: absolute;
   background: 0;
-  right: 0;
-  width: 100%;
+  right: 10px;
+  border: 0;
+  /* width: 100%; */
 }
 
 .section-form__highlight__button:hover {
-  color: blue;
+  color: rgb(71, 182, 216);
 }

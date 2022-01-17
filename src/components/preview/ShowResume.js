@@ -8,6 +8,12 @@ import Contact from './Contact';
 import './ShowResume.css';
 import Applicant from './Applicant';
 
+
+ const DUMMY_PROFILE =
+    'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
+  const DUMMY_EXPERIENCE =
+    'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.';
+
 const ShowResume = props => {
   const {
     applicant__firstName,
@@ -17,11 +23,6 @@ const ShowResume = props => {
     applicant__email,
     applicant__jobTitle,
   } = props.data;
-
-  const DUMMY_PROFILE =
-    'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
-  const DUMMY_EXPERIENCE =
-    'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.';
 
   return (
     <main className='show'>

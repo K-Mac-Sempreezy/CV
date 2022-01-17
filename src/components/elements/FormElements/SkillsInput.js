@@ -1,16 +1,14 @@
 import React from 'react';
 
-import Button from '../UIElements/Button';
 import './SkillsInput.css';
 
 const SkillsInput = props => {
   return (
     <div className='skills'>
       <input type='text' placeholder={props.placeholder} />
-      <Button
+      <button
         className={`skills__button`}
-        label={props.buttonLabel}
-      />
+      >{props.buttonLabel}</button>
     </div>
   );
 };

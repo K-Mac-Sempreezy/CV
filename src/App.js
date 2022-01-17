@@ -16,8 +16,6 @@ const App = props => {
     }));
   };
 
-  console.log(resumeData)
-
   return (
     <div className='parent'>
       <EditResume

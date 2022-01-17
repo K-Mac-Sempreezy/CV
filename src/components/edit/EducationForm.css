@@ -1,3 +1,45 @@
 .education {
   margin-bottom: 4rem;
 }
+
+.education ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
+.education__additional {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  height: 2rem;
+  border-radius: 2rem;
+  background: white;
+  overflow: hidden;
+  padding: 0 1.5rem;
+  margin-bottom: 0.85rem;
+}
+
+.education__input {
+  width: 100%;
+  font-size: 14px;
+  border: 0;
+  background: 0;
+  padding-right: 90px;
+  outline: 0
+}
+
+.education__button {
+  color: gray;
+  font-size: 14px;
+  position: absolute;
+  background: 0;
+  right: 10px;
+  border: 0;
+}
+
+.education__button:hover {
+  color: rgb(71, 182, 216);
+}

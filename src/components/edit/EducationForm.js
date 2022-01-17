@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import {v4 as uuidv4} from 'uuid';
+import { v4 as uuidv4 } from 'uuid';
 
 import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
 import DatePicker from '../elements/FormElements/DatePicker';
@@ -15,19 +15,21 @@ const EducationForm = props => {
   const onAddInputHandler = num => {
     setHighlightList(prevList => [
       ...prevList,
-      { id: `experience-${highlightList.length}` },
+      { id: `education-${uuidv4()}` },
     ]);
   };
 
-  const onHighlightDeleteHandler = () => {};
+  const onHighlightDeleteHandler = id => {
+    const newList = highlightList.filter(item => item.id !== id);
+    setHighlightList(newList);
+  };
 
   const onHighlightChangeHandler = () => {};
 
-  
   const startDateHandler = startDate => {
     onStartDate(startDate);
   };
-  
+
   const endDateHandler = endDate => {
     onEndDate(endDate);
   };
@@ -50,20 +52,25 @@ const EducationForm = props => {
         highlight={'Education highlight'}
         onAddInput={onAddInputHandler}
       />
-      {highlightList.length > 0
-        ? highlightList.map(item => (
-            <AdditionalHighlight
-              key={uuidv4()}
-              id={item.id}
-              placeholder={'Additional highlight'}
-              containerClass={'education__additional'}
-              inputClass={'education__input'}
-              buttonClass={'education__button'}
-              onDelete={onHighlightDeleteHandler}
-              onChange={onHighlightChangeHandler}
-            />
-          ))
-        : null}
+
+      {
+        <ul>
+          {highlightList.length > 0
+            ? highlightList.map((item, index) => (
+                <AdditionalHighlight
+                  key={item.id}
+                  id={item.id}
+                  placeholder={'Additional highlight'}
+                  containerClass={'education__additional'}
+                  inputClass={'education__input'}
+                  buttonClass={'education__button'}
+                  onDelete={onHighlightDeleteHandler}
+                  onChange={onHighlightChangeHandler}
+                />
+              ))
+            : null}
+        </ul>
+      }
       <AddDeleteButtons add={'Add'} delete={'Delete'} />
     </div>
   );

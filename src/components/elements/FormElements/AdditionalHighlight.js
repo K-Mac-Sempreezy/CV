@@ -2,18 +2,21 @@ import React from 'react';
 
 const AdditionalHighlight = props => {
   const {onDelete, onChange} = props;
-  const onClickHandler = () => {
+  const onClickHandler = event => {
+    
     onDelete(props.id)
   };
 
   const inputChangeHandler = event => {
     const value = event.target.value;
     const id = event.target.id;
+    console.log({id, value})
     onChange(value, id);
   };
 
+
   return (
-    <div className={props.containerClass}>
+    <li className={props.containerClass}>
       <input
         id={props.id}
         className={props.inputClass}
@@ -22,13 +25,14 @@ const AdditionalHighlight = props => {
         onChange={inputChangeHandler} 
       />
       <button
+        id={props.id}
         type='button'
         className={props.buttonClass}
         onClick={onClickHandler}
       >
         delete
       </button>
-    </div>
+    </li>
   );
 };
 

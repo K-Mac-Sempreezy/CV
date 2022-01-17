@@ -42,20 +42,24 @@ const ExperienceForm = props => {
         highlight={'Experience highlight'}
         onAddInput={onAddInputHandler}
       />
-      {highlightList.length > 0
-        ? highlightList.map(item => (
-            <AdditionalHighlight
-              key={uuidv4()}
-              id={item.id}
-              placeholder={'Additional highlight'}
-              containerClass={'experience__additional'}
-              inputClass={'experience__input'}
-              buttonClass={'experience__button'}
-              onDelete={onHighlightDeleteHandler}
-              onChange={onHighlightChangeHandler}
-            />
-          ))
-        : null}
+      {
+        <ul>
+          {highlightList.length > 0
+            ? highlightList.map(item => (
+                <AdditionalHighlight
+                  key={uuidv4()}
+                  id={item.id}
+                  placeholder={'Additional highlight'}
+                  containerClass={'experience__additional'}
+                  inputClass={'experience__input'}
+                  buttonClass={'experience__button'}
+                  onDelete={onHighlightDeleteHandler}
+                  onChange={onHighlightChangeHandler}
+                />
+              ))
+            : null}
+        </ul>
+      }
       <AddDeleteButtons />
     </div>
   );

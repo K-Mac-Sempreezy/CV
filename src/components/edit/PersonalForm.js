@@ -3,12 +3,12 @@ import React from 'react';
 import './PersonalForm.css';
 
 const PersonalForm = props => {
-  const { onData } = props;
+  const { onPersonal } = props;
 
   const inputChangeHandler = event => {
     const key = event.target.id;
     const value = event.target.value;
-    onData(key, value);
+    onPersonal(key, value);
   };
 
   return (
@@ -18,25 +18,25 @@ const PersonalForm = props => {
         type='text'
         placeholder='First name'
         onChange={inputChangeHandler}
-      />
+        />
       <input
         id='applicant__lastName'
         type='text'
         placeholder='Last name'
         onChange={inputChangeHandler}
-      />
+        />
       <input
         id='applicant__jobTitle'
         type='text'
         placeholder='Job Title'
         onChange={inputChangeHandler}
-      />
+        />
       <input
         id='applicant__address'
         type='text'
         placeholder='Address'
         onChange={inputChangeHandler}
-      />
+        />
       <input
         id='applicant__phone'
         type='text'

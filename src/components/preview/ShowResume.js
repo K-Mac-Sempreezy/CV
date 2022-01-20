@@ -5,54 +5,60 @@ import Education from './Education';
 import SectionHeading from './SectionHeading';
 import Profile from './Profile';
 import Contact from './Contact';
-import './ShowResume.css';
+import BulletPoint from './BulletPoint';
 import Applicant from './Applicant';
+import './ShowResume.css';
 
-
- const DUMMY_PROFILE =
-    'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
-  const DUMMY_EXPERIENCE =
-    'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.';
 
 const ShowResume = props => {
-  const {
-    applicant__firstName,
-    applicant__lastName,
-    applicant__address,
-    applicant__phone,
-    applicant__email,
-    applicant__jobTitle,
-  } = props.data;
+  const {personal, profile, experience, education 
+    // skills
+  } = props;
 
   return (
     <main className='show'>
       <div className='show__top'></div>
       <Applicant
-        firstName={applicant__firstName}
-        lastName={applicant__lastName}
-        jobTitle={applicant__jobTitle}
+        firstName={personal.applicant__firstName}
+        lastName={personal.applicant__lastName}
+        jobTitle={personal.applicant__jobTitle}
       />
       <Contact
-        address={applicant__address}
-        phone={applicant__phone}
-        email={applicant__email}
+        address={personal.applicant__address}
+        phone={personal.applicant__phone}
+        email={personal.applicant__email}
       />
       <hr className='divider__horz' />
       <section className='show__info'>
         <div className='show__info-left'>
           <SectionHeading icon={'profile'} section={'Profile'} />
-          <Profile text={DUMMY_PROFILE} />
+          <Profile text={profile} />
           <SectionHeading
             icon={'experience'}
             section={'Work Experience'}
           />
-          <Experience
-            date={'06/2017 - 03/2019'}
-            location={'STUTTGART, GERMANY'}
-            title={'Software Engineer'}
-            name={'Critical Alert, Inc.'}
-            bullet={DUMMY_EXPERIENCE}
-          />
+          {experience.map(item => (
+            <Experience
+              key={item.id}
+              id={item.id}
+              startDate={item.startDate || ''}
+              endDate={item.endDate || ''}
+              location={item.location || ''}
+              title={item.title || ''}
+              name={item.name || ''}
+              highlights={props.highlights || ''}
+            >
+              {item.highlights
+                ? item.highlights.map(subItem => (
+                    <BulletPoint
+                      key={subItem.id}
+                      id={subItem.id}
+                      text={subItem.value || ''}
+                    />
+                  ))
+                : null}
+            </Experience>
+          ))}
         </div>
         <hr className='divider__vert' />
         <div className='show__info-right'>
@@ -61,13 +67,26 @@ const ShowResume = props => {
               icon={'education'}
               section={'Education'}
             />
-            <Education
-              date={'09/2014 - 05/2015'}
-              location={'OXFORD, UNITED KINGDOM'}
-              title={'Software Engineer'}
-              name={'University of Oxford'}
-              highlights={'Highlights'}
-            />
+            {education.map(item => (
+              <div key={item.id} id={item.id}>
+                <Education
+                  startDate={item.startDate}
+                  endDate={item.endDate}
+                  location={item.location}
+                  title={item.title}
+                  name={item.name}
+                />
+                {item.highlights
+                  ? item.highlights.map(subItem => (
+                      <BulletPoint
+                        key={subItem.id}
+                        id={subItem.id}
+                        text={subItem.value}
+                      />
+                    ))
+                  : null}
+              </div>
+            ))}
           </div>
           <div className='show__skills'>
             <SectionHeading icon={'skills'} section={'Skills'} />

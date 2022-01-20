@@ -1,35 +1,32 @@
 import React from 'react';
+// import { v4 as uuidv4 } from 'uuid';
 
 import './DatePicker.css';
 
 const DatePicker = props => {
 
-  const { onData } = props;
+  const { onDate } = props;
 
   const onInputHandler = event => {
-    const key = event.target.id;
-    const value = event.target.value;
-    onData(key, value);
+    onDate(event);
   };
- 
+
 
   return (
     <div className='date'>
       <div className='date__start'>
-        <label htmlFor='start'>Start date:</label>
+        <label htmlFor='start-date'>Start date:</label>
         <input
           type='date'
-          id='experience__start'
-          name='start-date'
+          name='startDate'
           onInput={onInputHandler}
         />
       </div>
       <div className='date__end'>
-        <label htmlFor='end'>End date:</label>
+        <label htmlFor='end-date'>End date:</label>
         <input
           type='date'
-          id='experience__end'
-          name='end-date'
+          name='endDate'
           onInput={onInputHandler}
         />
       </div>

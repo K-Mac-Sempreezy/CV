@@ -2,6 +2,12 @@
   margin-bottom: 4rem;
 }
 
+.experience ul {
+  padding: 0;
+  list-style-type: none;
+  margin: 0;
+}
+
 .experience__additional {
   position: relative;
   display: flex;
@@ -22,7 +28,7 @@
   border: 0;
   background: 0;
   padding-right: 90px;
-  outline: 0
+  outline: none;
 }
 
 .experience__button {
@@ -37,4 +43,25 @@
 
 .experience__button:hover {
   color: rgb(71, 182, 216);
+}
+
+.experience__highlight {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  overflow: hidden;
+  background: 0;
+}
+
+.experience__highlight input {
+  background: white;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0 1.5rem;
+  margin: 0.4rem 0;
+  font-size: 14px;
+  height: 2rem;
+  width: 100%;
+  outline: none;
 }

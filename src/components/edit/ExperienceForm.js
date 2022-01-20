@@ -1,66 +1,68 @@
-import React, { useEffect, useState } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
 
 import DatePicker from '../elements/FormElements/DatePicker';
 import SectionForm from '../elements/FormElements/SectionForm';
 import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
-import AdditionalHighlight from '../elements/FormElements/AdditionalHighlight';
 import './ExperienceForm.css';
 
 const ExperienceForm = props => {
-  const [highlightList, setHighlightList] = useState([]);
 
-  const onAddInputHandler = num => {
-    setHighlightList(prevList => [
-      ...prevList,
-      { id: `experience-${highlightList.length}` },
-    ]);
+  const { onExperience, onDeleteExperience, onAddExperience, id } = props;
+
+  const onChangeHandler = (event) => {
+    onExperience(id, event);
   };
 
-  const onHighlightDeleteHandler = () => {
-    
+  const onDeleteHandler = () => {
+    onDeleteExperience(id)
   };
 
-  const onHighlightChangeHandler = () => {
-    
+  const onAddHandler = () => {
+    onAddExperience()
   };
-
-  useEffect(() => {
-    if (highlightList.length > 0) {
-      console.log(highlightList)
-    }
-  }, [highlightList])
-
-
 
   return (
     <div className='experience'>
-      <DatePicker />
+      <DatePicker onDate={onChangeHandler} />
       <SectionForm
-        title={'Job Title'}
-        establishment={'Company Name'}
-        highlight={'Experience highlight'}
-        onAddInput={onAddInputHandler}
+        onSectionInput={onChangeHandler}
+        title={'Position'}
+        establishment={'Company'}
       />
-      {
-        <ul>
-          {highlightList.length > 0
-            ? highlightList.map(item => (
-                <AdditionalHighlight
-                  key={uuidv4()}
-                  id={item.id}
-                  placeholder={'Additional highlight'}
-                  containerClass={'experience__additional'}
-                  inputClass={'experience__input'}
-                  buttonClass={'experience__button'}
-                  onDelete={onHighlightDeleteHandler}
-                  onChange={onHighlightChangeHandler}
-                />
-              ))
-            : null}
-        </ul>
-      }
-      <AddDeleteButtons />
+      <div className='experience__highlight'>
+        <input
+          id={`ex-highlight-1-${id}`}
+          type='text'
+          name='highlight_1'
+          placeholder='Experience highlight'
+          onChange={onChangeHandler}
+          />
+        <input
+          id={`ex-highlight-2-${id}`}
+          type='text'
+          name='highlight_2'
+          placeholder='Optional highlight'
+          onChange={onChangeHandler}
+          />
+        <input
+          id={`ex-highlight-3-${id}`}
+          type='text'
+          name='highlight_3'
+          placeholder='Optional highlight'
+          onChange={onChangeHandler}
+          />
+        <input
+          id={`ex-highlight-4-${id}`}
+          name='highlight_4'
+          type='text'
+          placeholder='Optional highlight'
+          onChange={onChangeHandler}
+        />
+      </div>
+      <AddDeleteButtons
+        onDelete={onDeleteHandler}
+        onAdd={onAddHandler}
+      />
     </div>
   );
 };

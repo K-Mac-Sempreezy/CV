@@ -2,14 +2,18 @@
   width: 100vw;
   min-width: 100rem;
   /* height: 100vh; */
-  min-height: 50rem;
-  max-height: 1000px;
+  min-height: 50rem !important;
+  /* height: 2000px; */
   display: grid;
+  overflow: auto;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }
 
 .resume {
   margin: 1rem 5rem;
-  max-height: 1000px;
+  min-height: 1000px;
+  position: sticky;
+  top: -20px;
+  align-self: flex-start;
 }

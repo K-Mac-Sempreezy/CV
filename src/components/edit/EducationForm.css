@@ -43,3 +43,24 @@
 .education__button:hover {
   color: rgb(71, 182, 216);
 }
+
+.education__highlight {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  font-size: 14px;
+}
+
+.education__highlight input {
+  background: white;
+  border-radius: 2rem;
+  border: 0;
+  padding: 0 1.5rem;
+  margin: 0.4rem 0;
+  font-size: 14px;
+  height: 2rem;
+  width: 100%;
+  outline: none;
+}

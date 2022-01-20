@@ -1,30 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import { v4 as uuidv4 } from 'uuid';
+import React from 'react';
 
 import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
 import DatePicker from '../elements/FormElements/DatePicker';
 import SectionForm from '../elements/FormElements/SectionForm';
-import AdditionalHighlight from '../elements/FormElements/AdditionalHighlight';
 import './EducationForm.css';
 
 const EducationForm = props => {
-  const [highlightList, setHighlightList] = useState([]);
 
   const { onStartDate, onEndDate } = props;
 
-  const onAddInputHandler = num => {
-    setHighlightList(prevList => [
-      ...prevList,
-      { id: `education-${uuidv4()}` },
-    ]);
-  };
+  // const onAddInputHandler = num => {
+  //   setHighlightList(prevList => [
+  //     ...prevList,
+  //     { id: `education-${uuidv4()}`, inputValue: '' },
+  //   ]);
+  // };
 
-  const onHighlightDeleteHandler = id => {
-    const newList = highlightList.filter(item => item.id !== id);
-    setHighlightList(newList);
-  };
-
-  const onHighlightChangeHandler = () => {};
+  // const onHighlightChangeHandler = (id, value) => {
+  //   setHighlightList(prevList => {
+  //     return prevList.map(item => {
+  //       return item.id === id ? { ...item, inputValue: value } : item;
+  //     });
+  //   });
+  // };
 
   const startDateHandler = startDate => {
     onStartDate(startDate);
@@ -34,12 +32,6 @@ const EducationForm = props => {
     onEndDate(endDate);
   };
 
-  useEffect(() => {
-    if (highlightList.length > 0) {
-      console.log(highlightList);
-    }
-  }, [highlightList]);
-
   return (
     <div className='education'>
       <DatePicker
@@ -47,30 +39,29 @@ const EducationForm = props => {
         onEndDate={endDateHandler}
       />
       <SectionForm
-        title={'Area of Study'}
+        position={'Area of Study'}
         establishment={'School Name'}
-        highlight={'Education highlight'}
-        onAddInput={onAddInputHandler}
       />
-
-      {
-        <ul>
-          {highlightList.length > 0
-            ? highlightList.map((item, index) => (
-                <AdditionalHighlight
-                  key={item.id}
-                  id={item.id}
-                  placeholder={'Additional highlight'}
-                  containerClass={'education__additional'}
-                  inputClass={'education__input'}
-                  buttonClass={'education__button'}
-                  onDelete={onHighlightDeleteHandler}
-                  onChange={onHighlightChangeHandler}
-                />
-              ))
-            : null}
-        </ul>
-      }
+      <div className='education__highlight'>
+        <input
+          id={`ed-highlight-1-${props.id}`}
+          type='text'
+          placeholder={'Add education highlight'}
+          // onChange={onHighlightChangeHandler}
+        />
+        <input
+          id={`ed-highlight-2-${props.id}`}
+          type='text'
+          placeholder={'Optional highlight'}
+          // onChange={onHighlightChangeHandler}
+        />
+        <input
+          id={`ed-highlight-3-${props.id}`}
+          type='text'
+          placeholder={'Optional highlight'}
+          // onChange={onHighlightChangeHandler}
+        />
+      </div>
       <AddDeleteButtons add={'Add'} delete={'Delete'} />
     </div>
   );

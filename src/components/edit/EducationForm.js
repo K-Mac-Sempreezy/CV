@@ -7,22 +7,7 @@ import './EducationForm.css';
 
 const EducationForm = props => {
 
-  const { onStartDate, onEndDate } = props;
-
-  // const onAddInputHandler = num => {
-  //   setHighlightList(prevList => [
-  //     ...prevList,
-  //     { id: `education-${uuidv4()}`, inputValue: '' },
-  //   ]);
-  // };
-
-  // const onHighlightChangeHandler = (id, value) => {
-  //   setHighlightList(prevList => {
-  //     return prevList.map(item => {
-  //       return item.id === id ? { ...item, inputValue: value } : item;
-  //     });
-  //   });
-  // };
+  const { onStartDate, onEndDate, onAddEducation, onDeleteEducation, id } = props;
 
   const startDateHandler = startDate => {
     onStartDate(startDate);
@@ -32,6 +17,14 @@ const EducationForm = props => {
     onEndDate(endDate);
   };
 
+  const onAddHandler = () => {
+    onAddEducation();
+  };
+
+  const onDeleteHandler = () => {
+    onDeleteEducation(id);
+  };
+
   return (
     <div className='education'>
       <DatePicker
@@ -39,30 +32,36 @@ const EducationForm = props => {
         onEndDate={endDateHandler}
       />
       <SectionForm
+        location={'Location'}
         position={'Area of Study'}
         establishment={'School Name'}
       />
       <div className='education__highlight'>
         <input
-          id={`ed-highlight-1-${props.id}`}
+          id={`ed-highlight-1-${id}`}
           type='text'
           placeholder={'Add education highlight'}
           // onChange={onHighlightChangeHandler}
         />
         <input
-          id={`ed-highlight-2-${props.id}`}
+          id={`ed-highlight-2-${id}`}
           type='text'
           placeholder={'Optional highlight'}
           // onChange={onHighlightChangeHandler}
         />
         <input
-          id={`ed-highlight-3-${props.id}`}
+          id={`ed-highlight-3-${id}`}
           type='text'
           placeholder={'Optional highlight'}
           // onChange={onHighlightChangeHandler}
         />
       </div>
-      <AddDeleteButtons add={'Add'} delete={'Delete'} />
+      <AddDeleteButtons
+        add={'Add'}
+        delete={'Delete'}
+        onAdd={onAddHandler}
+        onDelete={onDeleteHandler}
+      />
     </div>
   );
 };

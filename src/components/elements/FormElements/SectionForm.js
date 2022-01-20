@@ -3,7 +3,7 @@ import React from 'react';
 import './SectionForm.css';
 
 const SectionForm = props => {
-  const { onSectionInput, establishment, title, position } = props;
+  const { onSectionInput, establishment, location, title, position, id } = props;
 
   const onChangeHandler = event => {
     onSectionInput(event)
@@ -12,19 +12,26 @@ const SectionForm = props => {
   return (
     <div className='section-form'>
       <input
-        className='section-form__input'
+        id={`titlePosition-${id}`}
         name='title'
         type='text'
         placeholder={title || position}
         onChange={onChangeHandler}
-      />
+        />
       <input
-        className='section-form__input'
+        id={`establishment-${id}`}
         name='establishment'
         type='text'
         placeholder={establishment}
         onChange={onChangeHandler}
       />
+      <input
+        id={`location-${id}`}
+        name='location'
+        type='text'
+        placeholder={location}
+        onChange={onChangeHandler}
+        />
     </div>
   );
 };

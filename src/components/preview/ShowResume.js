@@ -9,9 +9,12 @@ import BulletPoint from './BulletPoint';
 import Applicant from './Applicant';
 import './ShowResume.css';
 
-
 const ShowResume = props => {
-  const {personal, profile, experience, education 
+  const {
+    personal,
+    profile,
+    experience,
+    education,
     // skills
   } = props;
 
@@ -46,13 +49,12 @@ const ShowResume = props => {
               location={item.location || ''}
               title={item.title || ''}
               name={item.name || ''}
-              highlights={props.highlights || ''}
             >
-              {item.highlights
-                ? item.highlights.map(subItem => (
+              {item.highlights.length > 0
+                ? item.highlights.map((subItem, index) => (
                     <BulletPoint
-                      key={subItem.id}
-                      id={subItem.id}
+                      key={subItem.id || index}
+                      id={subItem.id || `exhlt-${index}`}
                       text={subItem.value || ''}
                     />
                   ))
@@ -68,24 +70,25 @@ const ShowResume = props => {
               section={'Education'}
             />
             {education.map(item => (
-              <div key={item.id} id={item.id}>
-                <Education
-                  startDate={item.startDate}
-                  endDate={item.endDate}
-                  location={item.location}
-                  title={item.title}
-                  name={item.name}
-                />
-                {item.highlights
-                  ? item.highlights.map(subItem => (
-                      <BulletPoint
-                        key={subItem.id}
-                        id={subItem.id}
-                        text={subItem.value}
-                      />
+              <Education
+                key={item.id}
+                id={item.id}
+                startDate={item.startDate}
+                endDate={item.endDate}
+                location={item.location}
+                title={item.title}
+                name={item.name}
+              >
+                {item.highlights.length > 0
+                 ? item.highlights.map((subItem, index) => (
+                  <BulletPoint
+                    key={subItem.id || index}
+                    id={subItem.id || `edhlt-${index}`}
+                    text={subItem.value || ''}
+                  />
                     ))
                   : null}
-              </div>
+              </Education>
             ))}
           </div>
           <div className='show__skills'>

@@ -7,19 +7,20 @@ import SkillsForm from '../edit/SkillsForm';
 import './EditResume.css';
 
 const EditResume = props => {
-
   const {
     onPersonal,
     onProfile,
     onExperience,
     onAddExperience,
     onDeleteExperience,
+    onExperienceHighlight,
     onEducation,
     onAddEducation,
     onDeleteEducation,
+    onEducationHighlight,
     onSkills,
     experience,
-    education
+    education,
   } = props;
 
   const onPersonalHandler = (key, value) => {
@@ -35,24 +36,32 @@ const EditResume = props => {
     onExperience(id, event);
   };
 
+  const onExperienceHighlightHandler = (id, event) => {
+    onExperienceHighlight(id, event);
+  };
+
   const onAddExperienceHandler = () => {
     onAddExperience();
   };
-  
-  const onDeleteExperienceHandler = (id) => {
+
+  const onDeleteExperienceHandler = id => {
     onDeleteExperience(id);
   };
 
-  const onEducationHandler = educationObject => {
-    onEducation(educationObject);
+  const onEducationHandler = (id, event) => {
+    onEducation(id, event);
   };
 
-  const onAddEducationHandler = educationObject => {
-    onAddEducation(educationObject);
+  const onEducationHighlightHandler = (id, event) => {
+    onEducationHighlight(id, event)
   };
 
-  const onDeleteEducationHandler = educationObject => {
-    onDeleteEducation(educationObject);
+  const onAddEducationHandler = () => {
+    onAddEducation();
+  };
+
+  const onDeleteEducationHandler = id => {
+    onDeleteEducation(id);
   };
 
   const onSkillsHandler = skillsObject => {
@@ -79,6 +88,7 @@ const EditResume = props => {
             id={item.id}
             experience={experience}
             onExperience={onExperienceHandler}
+            onHighlight={onExperienceHighlightHandler}
             onAddExperience={onAddExperienceHandler}
             onDeleteExperience={onDeleteExperienceHandler}
           />
@@ -91,6 +101,7 @@ const EditResume = props => {
             key={item.id}
             id={item.id}
             onEducation={onEducationHandler}
+            onEducationHighlight={onEducationHighlightHandler}
             onAddEducation={onAddEducationHandler}
             onDeleteEducation={onDeleteEducationHandler}
           />

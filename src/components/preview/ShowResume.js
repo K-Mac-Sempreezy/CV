@@ -35,7 +35,7 @@ const ShowResume = props => {
       <section className='show__info'>
         <div className='show__info-left'>
           <SectionHeading icon={'profile'} section={'Profile'} />
-          <Profile text={profile} />
+          <Profile profile={profile} />
           <SectionHeading
             icon={'experience'}
             section={'Work Experience'}
@@ -47,19 +47,11 @@ const ShowResume = props => {
               startDate={item.startDate || ''}
               endDate={item.endDate || ''}
               location={item.location || ''}
+              establishment={item.establishment}
               title={item.title || ''}
               name={item.name || ''}
-            >
-              {item.highlights.length > 0
-                ? item.highlights.map((subItem, index) => (
-                    <BulletPoint
-                      key={subItem.id || index}
-                      id={subItem.id || `exhlt-${index}`}
-                      text={subItem.value || ''}
-                    />
-                  ))
-                : null}
-            </Experience>
+              bullets={item.highlights}
+            />
           ))}
         </div>
         <hr className='divider__vert' />
@@ -76,16 +68,17 @@ const ShowResume = props => {
                 startDate={item.startDate}
                 endDate={item.endDate}
                 location={item.location}
+                establishment={item.establishment}
                 title={item.title}
                 name={item.name}
               >
                 {item.highlights.length > 0
-                 ? item.highlights.map((subItem, index) => (
-                  <BulletPoint
-                    key={subItem.id || index}
-                    id={subItem.id || `edhlt-${index}`}
-                    text={subItem.value || ''}
-                  />
+                  ? item.highlights.map((subItem, index) => (
+                      <BulletPoint
+                        key={subItem.id || index}
+                        id={subItem.id || `edhlt-${index}`}
+                        text={subItem.text || ''}
+                      />
                     ))
                   : null}
               </Education>

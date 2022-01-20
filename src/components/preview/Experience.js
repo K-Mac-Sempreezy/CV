@@ -1,17 +1,39 @@
 import React from 'react';
 
 import DateLocation from './DateLocation';
-import Title from './Title';
-import Name from './Name';
+import BulletPoint from './BulletPoint';
+import './Experience.css';
 
 const Experience = props => {
+  const { startDate, endDate, location, title, establishment, bullets } =
+    props;
 
   return (
     <React.Fragment>
-      <DateLocation startDate={props.startDate} endDate={props.endDate} location={props.location} />
-      <Title title={props.title} />
-      <Name name={props.name} />
-      <div>{props.children}</div>
+      <DateLocation
+        startDate={startDate}
+        endDate={endDate}
+        location={location}
+      />
+      <div className='experience__title'>
+        {title ? title : 'Your position'}
+      </div>
+      <div className='experience__establishment'>
+        {establishment ? establishment : 'Your last workplace'}
+      </div>
+      {bullets.length > 0 ? (
+        bullets.map((item, index) => (
+          <BulletPoint
+            key={item.id || index}
+            id={item.id || `exhlt-${index}`}
+            text={item.text || ''}
+          />
+        ))
+      ) : (
+        <div style={{ 'fontSize': 'small', 'marginLeft': '1rem' }}>
+          • Add an experience highlight to your resume.
+        </div>
+      )}
     </React.Fragment>
   );
 };

@@ -9,15 +9,11 @@ import Card from './components/elements/UIElements/Card';
 import './App.css';
 import { useEffect } from 'react/cjs/react.development';
 
- export const PLACEHOLDERS = {
-   highlight: 'Experience highlight',
-   additional: 'Optional highlight',
- };
-
- const DUMMY_PROFILE =
-   'Results-driven and motivated Software Engineer with a demonstrated experience in improving software pertormance, testing and updating existing software, and developing new software functionalities. Offers proven track record of extraordinary achievements, strong attention to detail, and ability to finish projects on schedule and within budget.';
-// const DUMMY_EXPERIENCE =
-//   'Developed and implemented tools which increased the level of automation and efficiency of installing and configuring servers.';
+export const PLACEHOLDERS = {
+  highlight: 'Experience highlight',
+  additional: 'Optional highlight',
+  profile: 'Add some information about yourself. Show who you are and what you want from your next job.'
+};
 
 // const formObject = {
 //   id: uuidv4(),
@@ -35,28 +31,16 @@ const App = () => {
   const [experience, setExperience] = useImmer([
     {
       id: uuidv4(),
-      // startDate: '',
-      // endDate: '',
-      // location: '',
-      // position: '',
-      // establishment: '',
       highlights: [],
     },
   ]);
   const [education, setEducation] = useImmer([
     {
       id: uuidv4(),
-      // startDate: '',
-      // endDate: '',
-      // location: '',
-      // position: '',
-      // establishment: '',
       highlights: [],
     },
   ]);
   // const [skillsList, setSkillsList] = useImmer([]);
-
-
 
   const onPersonalHandler = (key, value) => {
     setPersonal(draft => {
@@ -73,7 +57,11 @@ const App = () => {
     const value = event.target.value;
     setExperience(draft => {
       const item = draft.find(item => item.id === id);
-      item[name] = value;
+      if (!item) {
+        return;
+      } else {
+        item[name] = value;
+      }
     });
   };
 
@@ -93,61 +81,9 @@ const App = () => {
     });
   };
 
-  // const onExperienceHighlightHandler = (id, event) => {
-  //   const elementId = event.target.id;
-  //   const value = event.target.value;
-  //   if (
-  //     experience.map(item =>
-  //       item.id === id
-  //         ? {
-  //             ...item,
-  //             highlights: [
-  //               ...item.highlights,
-  //               item.highlights.map(subItem =>
-  //                 subItem.id === elementId ? true : false,
-  //               ),
-  //             ],
-  //           }
-  //         : false,
-  //     )
-  //   ) {
-  //     setExperience(prevList => {
-  //       return prevList.map(item => {
-  //         return item.id === id
-  //           ? {
-  //               ...item,
-  //               highlights: [
-  //                 ...item.highlights,
-  //                 item.highlights.map(subItem =>
-  //                   subItem.id === elementId
-  //                     ? { ...subItem, text: value }
-  //                     : subItem,
-  //                 ),
-  //               ],
-  //             }
-  //           : item;
-  //       });
-  //     });
-  //   } else {
-  //     setExperience(prevList => {
-  //       return prevList.map(item => {
-  //         return item.id === id
-  //           ? {
-  //               ...item,
-  //               highlights: [
-  //                 ...item.highlights,
-  //                 { id: elementId, text: value },
-  //               ],
-  //             }
-  //           : item;
-  //       });
-  //     });
-  //   }
-  // };
-
   const onAddExperienceHandler = () => {
     setExperience(draft => {
-      draft.push({ id: uuidv4, highlights: [] });
+      draft.push({ id: uuidv4(), highlights: [] });
     });
   };
 
@@ -169,7 +105,7 @@ const App = () => {
 
   const onAddEducationHandler = () => {
     setEducation(draft => {
-      draft.push({ id: uuidv4, highlights: [] });
+      draft.push({ id: uuidv4(), highlights: [] });
     });
   };
 
@@ -222,12 +158,12 @@ const App = () => {
         experience={experience}
         education={education}
         placeholder={PLACEHOLDERS}
-        />
+      />
       <Card className={'resume'}>
         <ShowResume
           id='show-resume'
           personal={personal}
-          profile={profile ? profile : DUMMY_PROFILE}
+          profile={profile}
           experience={experience}
           education={education}
           placeholder={PLACEHOLDERS}

@@ -1,8 +1,6 @@
 import React from 'react';
 
 import DateLocation from './DateLocation';
-import Title from './Title';
-import Name from './Name';
 
 const Education = props => {
   return (
@@ -12,9 +10,9 @@ const Education = props => {
         end={props.endDate}
         location={props.location}
       />
-      <Title title={props.title} />
-      <Name name={props.name} />
-      <div className='education__children'>{props.children}</div>
+      <div>{props.title}</div> 
+      <div>{props.name}</div>
+      <div className='education__children'>{props.establishment}</div>
     </React.Fragment>
   );
 };

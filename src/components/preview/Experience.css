@@ -1,0 +1,14 @@
+.experience__title, 
+.experience__establishment {
+  font-size: small;
+  font-weight: bold;
+}
+
+.experience__bullets {
+  font-size: small;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  
+}

@@ -3,7 +3,7 @@ import React from 'react';
 import './AddDeleteButtons.css';
 
 const AddDeleteButtons = props => {
-  const { onAdd, onDelete } = props;
+  const { onAdd, onDelete, id } = props;
 
   const onClickDeleteHandler = () => {
     onDelete();
@@ -15,10 +15,18 @@ const AddDeleteButtons = props => {
 
   return (
     <div className='buttons'>
-      <button className='delete' onClick={onClickDeleteHandler}>
+      <button
+        id={`delete-${id}`}
+        className='delete'
+        onClick={onClickDeleteHandler}
+      >
         Delete
       </button>
-      <button className='add' onClick={onClickAddHandler}>
+      <button
+        id={`add-${id}`}
+        className='add'
+        onClick={onClickAddHandler}
+      >
         Add
       </button>
     </div>

@@ -12,7 +12,8 @@ import { useEffect } from 'react/cjs/react.development';
 export const PLACEHOLDERS = {
   highlight: 'Experience highlight',
   additional: 'Optional highlight',
-  profile: 'Add some information about yourself. Show who you are and what you want from your next job.'
+  profile: 'Add some information about yourself. Show who you are and what you want from your next job.',
+  bulletPoint: 'Add an experience highlight here.'
 };
 
 // const formObject = {
@@ -40,7 +41,7 @@ const App = () => {
       highlights: [],
     },
   ]);
-  // const [skillsList, setSkillsList] = useImmer([]);
+  // const [skills, setSkills] = useImmer([]);
 
   const onPersonalHandler = (key, value) => {
     setPersonal(draft => {
@@ -99,7 +100,11 @@ const App = () => {
     const value = event.target.value;
     setEducation(draft => {
       const item = draft.find(item => item.id === id);
-      item[name] = value;
+      if (!item) {
+        return;
+      } else {
+        item[name] = value;
+      }
     });
   };
 

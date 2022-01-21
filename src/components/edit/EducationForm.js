@@ -28,10 +28,12 @@ const EducationForm = props => {
   return (
     <div className='education'>
       <DatePicker
+        id={id}
         onStartDate={startDateHandler}
         onEndDate={endDateHandler}
       />
       <SectionForm
+        id={id}
         location={'Location'}
         position={'Area of Study'}
         establishment={'School Name'}
@@ -57,6 +59,7 @@ const EducationForm = props => {
         />
       </div>
       <AddDeleteButtons
+        id={id}
         add={'Add'}
         delete={'Delete'}
         onAdd={onAddHandler}

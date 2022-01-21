@@ -1,11 +1,10 @@
 import React from 'react';
-// import { v4 as uuidv4 } from 'uuid';
 
 import './DatePicker.css';
 
 const DatePicker = props => {
 
-  const { onDate } = props;
+  const { onDate, id } = props;
 
   const onInputHandler = event => {
     onDate(event);
@@ -18,13 +17,15 @@ const DatePicker = props => {
         <label htmlFor='start-date'>Start date:</label>
         <input
           type='date'
+          id={`startDate-${id}`}
           name='startDate'
           onInput={onInputHandler}
-        />
+          />
       </div>
       <div className='date__end'>
         <label htmlFor='end-date'>End date:</label>
         <input
+          id={`endDate-${id}`}
           type='date'
           name='endDate'
           onInput={onInputHandler}

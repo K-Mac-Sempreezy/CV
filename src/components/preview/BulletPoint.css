@@ -2,11 +2,11 @@
   display: flex;
   flex-direction: row;
   align-items: flex-start;
-  margin-left: 1rem;
   font-size: small;
 }
 
 .bullet-point__point {
+  margin-left: 2.2rem;
   width: 5%;
 }
 

@@ -9,16 +9,16 @@ const Experience = props => {
     props;
 
   return (
-    <React.Fragment>
+    <div className='experience_preview'>
       <DateLocation
         startDate={startDate}
         endDate={endDate}
         location={location}
       />
-      <div className='experience__title'>
+      <div className='experience_preview__title'>
         {title ? title : 'Your position'}
       </div>
-      <div className='experience__establishment'>
+      <div className='experience_preview__establishment'>
         {establishment ? establishment : 'Your last workplace'}
       </div>
       {bullets.length > 0 ? (
@@ -30,11 +30,9 @@ const Experience = props => {
           />
         ))
       ) : (
-        <div style={{ 'fontSize': 'small', 'marginLeft': '1rem' }}>
-          • Add an experience highlight to your resume.
-        </div>
+       null
       )}
-    </React.Fragment>
+    </div>
   );
 };
 

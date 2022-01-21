@@ -35,9 +35,10 @@ const ExperienceForm = props => {
   };
 
   return (
-    <div className='experience'>
-      <DatePicker onDate={onChangeHandler} />
+    <div id={`experienceForm-${id}`} className='experience'>
+      <DatePicker id={id} onDate={onChangeHandler} />
       <SectionForm
+        id={id}
         onSectionInput={onChangeHandler}
         location={'Location'}
         title={'Position'}
@@ -74,6 +75,7 @@ const ExperienceForm = props => {
         />
       </div>
       <AddDeleteButtons
+        id={id}
         onDelete={onDeleteHandler}
         onAdd={onAddHandler}
       />

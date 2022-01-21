@@ -1,6 +1,7 @@
 .section-heading {
   display: flex;
   flex-direction: row;
+  align-items: center;
   justify-self: flex-start;
   margin-bottom: 1rem;
 }

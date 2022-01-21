@@ -5,14 +5,14 @@ import './DateLocation.css';
 const DateLocation = props => {
 
   const startDate = props.startDate;
-  let startMonth = (new Date(startDate).getMonth() + 1);
+  let startMonth = ((new Date(startDate).getMonth()) + 1);
   if (startMonth.toString().length !== 2) {
     startMonth = '0' + startMonth.toString()
   }
   const startYear = new Date(startDate).getFullYear();
   
   const endDate = props.endDate;
-  let endMonth = (new Date(endDate).getMonth() + 1);
+  let endMonth = ((new Date(endDate).getMonth()) + 1);
   if (endMonth.toString().length !== 2) {
     endMonth = '0' + endMonth.toString()
   }

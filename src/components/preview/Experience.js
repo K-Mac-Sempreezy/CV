@@ -5,8 +5,14 @@ import BulletPoint from './BulletPoint';
 import './Experience.css';
 
 const Experience = props => {
-  const { startDate, endDate, location, title, establishment, bullets } =
-    props;
+  const {
+    startDate,
+    endDate,
+    location,
+    title,
+    establishment,
+    bullets,
+  } = props;
 
   return (
     <div className='experience_preview'>
@@ -21,17 +27,15 @@ const Experience = props => {
       <div className='experience_preview__establishment'>
         {establishment ? establishment : 'Your last workplace'}
       </div>
-      {bullets.length > 0 ? (
-        bullets.map((item, index) => (
-          <BulletPoint
-            key={item.id || index}
-            id={item.id || `exhlt-${index}`}
-            text={item.text || ''}
-          />
-        ))
-      ) : (
-       null
-      )}
+      {bullets.length > 0
+        ? bullets.map((item, index) => (
+            <BulletPoint
+              key={item.id || index}
+              id={item.id || `exhlt-${index}`}
+              text={item.text || ''}
+            />
+          ))
+        : null}
     </div>
   );
 };

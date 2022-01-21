@@ -12,8 +12,8 @@ const ExperienceForm = props => {
 
   const {
     onExperience,
-    onDeleteExperience,
-    onAddExperience,
+    onDelete,
+    onAdd,
     onHighlight,
     id,
   } = props;
@@ -27,11 +27,11 @@ const ExperienceForm = props => {
   };
 
   const onDeleteHandler = () => {
-    onDeleteExperience(id)
+    onDelete(id)
   };
 
   const onAddHandler = () => {
-    onAddExperience()
+    onAdd()
   };
 
   return (

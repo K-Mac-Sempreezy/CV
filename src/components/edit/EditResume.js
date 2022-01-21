@@ -86,11 +86,10 @@ const EditResume = props => {
           <ExperienceForm
             key={item.id}
             id={item.id}
-            experience={experience}
             onExperience={onExperienceHandler}
             onHighlight={onExperienceHighlightHandler}
-            onAddExperience={onAddExperienceHandler}
-            onDeleteExperience={onDeleteExperienceHandler}
+            onAdd={onAddExperienceHandler}
+            onDelete={onDeleteExperienceHandler}
           />
         ))}
       </div>
@@ -101,9 +100,9 @@ const EditResume = props => {
             key={item.id}
             id={item.id}
             onEducation={onEducationHandler}
-            onEducationHighlight={onEducationHighlightHandler}
-            onAddEducation={onAddEducationHandler}
-            onDeleteEducation={onDeleteEducationHandler}
+            onHighlight={onEducationHighlightHandler}
+            onAdd={onAddEducationHandler}
+            onDelete={onDeleteEducationHandler}
           />
         ))}
       </div>

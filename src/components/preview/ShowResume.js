@@ -5,7 +5,6 @@ import Education from './Education';
 import SectionHeading from './SectionHeading';
 import Profile from './Profile';
 import Contact from './Contact';
-import BulletPoint from './BulletPoint';
 import Applicant from './Applicant';
 import './ShowResume.css';
 
@@ -71,17 +70,8 @@ const ShowResume = props => {
                 establishment={item.establishment}
                 title={item.title}
                 name={item.name}
-              >
-                {item.highlights.length > 0
-                  ? item.highlights.map((subItem, index) => (
-                      <BulletPoint
-                        key={subItem.id || index}
-                        id={subItem.id || `edhlt-${index}`}
-                        text={subItem.text || ''}
-                      />
-                    ))
-                  : null}
-              </Education>
+                bullets={item.highlights}
+              />
             ))}
           </div>
           <div className='show__skills'>

@@ -14,7 +14,7 @@ const DatePicker = props => {
   return (
     <div className='date'>
       <div className='date__start'>
-        <label htmlFor='start-date'>Start date:</label>
+        <label htmlFor='startDate'>Start date:</label>
         <input
           type='date'
           id={`startDate-${id}`}

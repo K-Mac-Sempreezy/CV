@@ -7,63 +7,59 @@ import './EducationForm.css';
 
 const EducationForm = props => {
 
-  const { onStartDate, onEndDate, onAddEducation, onDeleteEducation, id } = props;
+  const { onEducation, onAdd, onDelete, onHighlight, id } = props;
 
-  const startDateHandler = startDate => {
-    onStartDate(startDate);
+  const onChangeHandler = event => {
+    onEducation(id, event);
   };
 
-  const endDateHandler = endDate => {
-    onEndDate(endDate);
-  };
-
-  const onAddHandler = () => {
-    onAddEducation();
+  const onHighlightChangeHandler = event => {
+    onHighlight(id, event);
   };
 
   const onDeleteHandler = () => {
-    onDeleteEducation(id);
+    onDelete(id)
+  };
+
+  const onAddHandler = () => {
+    onAdd()
   };
 
   return (
     <div className='education'>
-      <DatePicker
-        id={id}
-        onStartDate={startDateHandler}
-        onEndDate={endDateHandler}
-      />
+      <DatePicker id={id} onDate={onChangeHandler} />
       <SectionForm
         id={id}
         location={'Location'}
         position={'Area of Study'}
         establishment={'School Name'}
+        onSectionInput={onChangeHandler}
       />
+      
       <div className='education__highlight'>
         <input
           id={`ed-highlight-1-${id}`}
           type='text'
           placeholder={'Add education highlight'}
-          // onChange={onHighlightChangeHandler}
+          onChange={onHighlightChangeHandler}
         />
         <input
           id={`ed-highlight-2-${id}`}
           type='text'
           placeholder={'Optional highlight'}
-          // onChange={onHighlightChangeHandler}
+          onChange={onHighlightChangeHandler}
         />
         <input
           id={`ed-highlight-3-${id}`}
           type='text'
           placeholder={'Optional highlight'}
-          // onChange={onHighlightChangeHandler}
+          onChange={onHighlightChangeHandler}
         />
       </div>
       <AddDeleteButtons
         id={id}
-        add={'Add'}
-        delete={'Delete'}
-        onAdd={onAddHandler}
         onDelete={onDeleteHandler}
+        onAdd={onAddHandler}
       />
     </div>
   );

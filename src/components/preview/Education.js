@@ -1,19 +1,40 @@
 import React from 'react';
 
 import DateLocation from './DateLocation';
+import BulletPoint from './BulletPoint';
+import './Education.css';
 
 const Education = props => {
+  const {
+    startDate,
+    endDate,
+    location,
+    title,
+    establishment,
+    bullets,
+  } = props;
+
   return (
-    <React.Fragment>
+    <div className='education-preview'>
       <DateLocation
-        start={props.startDate}
-        end={props.endDate}
-        location={props.location}
+        startDate={startDate}
+        endDate={endDate}
+        location={location}
       />
-      <div>{props.title}</div> 
-      <div>{props.name}</div>
-      <div className='education__children'>{props.establishment}</div>
-    </React.Fragment>
+      <div className='education-preview__title'>
+        {title ? title : 'Area of study'}
+      </div>
+      <div className='education-preview__establishment'>
+        {establishment ? establishment : 'School name'}
+      </div>
+      {bullets.map((item, index) => (
+        <BulletPoint
+          key={item.id || index}
+          id={item.id || `edhlt-${index}`}
+          text={item.text || ''}
+        />
+      ))}
+    </div>
   );
 };
 

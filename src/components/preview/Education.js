@@ -12,7 +12,7 @@ const Education = props => {
     title,
     establishment,
     bullets,
-  } = props;
+  } = props.education;
 
   return (
     <div className='education-preview'>
@@ -27,13 +27,15 @@ const Education = props => {
       <div className='education-preview__establishment'>
         {establishment ? establishment : 'School name'}
       </div>
-      {bullets.map((item, index) => (
-        <BulletPoint
-          key={item.id || index}
-          id={item.id || `edhlt-${index}`}
-          text={item.text || ''}
-        />
-      ))}
+      {bullets
+        ? bullets.map((item, index) => (
+            <BulletPoint
+              key={item.id || index}
+              id={item.id || `edhlt-${index}`}
+              text={item.text || ''}
+            />
+          ))
+        : null}
     </div>
   );
 };

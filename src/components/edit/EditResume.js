@@ -21,6 +21,7 @@ const EditResume = props => {
     onSkills,
     experience,
     education,
+    skills
   } = props;
 
   const onPersonalHandler = (key, value) => {
@@ -64,8 +65,8 @@ const EditResume = props => {
     onDeleteEducation(id);
   };
 
-  const onSkillsHandler = skillsObject => {
-    onSkills(skillsObject);
+  const onSkillsHandler = (id, event) => {
+    onSkills(id, event);
   };
 
   return (
@@ -107,7 +108,16 @@ const EditResume = props => {
         ))}
       </div>
       <div>Skills</div>
-      <SkillsForm onSkills={onSkillsHandler} />
+      <div>
+        {skills.map((item, index) => (
+          <SkillsForm
+            key={item.id}
+            id={item.id}
+            skill={item}
+            onSkills={onSkillsHandler}
+          />
+        ))}
+      </div>
     </div>
   );
 };

@@ -12,7 +12,7 @@ const Experience = props => {
     title,
     establishment,
     bullets,
-  } = props;
+  } = props.experience;
 
   return (
     <div className='experience_preview'>
@@ -27,7 +27,7 @@ const Experience = props => {
       <div className='experience_preview__establishment'>
         {establishment ? establishment : 'Your last workplace'}
       </div>
-      {bullets.length > 0
+      {bullets
         ? bullets.map((item, index) => (
             <BulletPoint
               key={item.id || index}

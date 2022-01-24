@@ -1,24 +1,23 @@
 import React from 'react';
 
-import SkillsInput from '../elements/FormElements/SkillsInput';
+import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
+import SkillInput from '../elements/FormElements/SkillInput';
 import './SkillsForm.css';
 
 const SkillsForm = props => {
+  const {fields} = props.skill;
+  const {onSkills, id} = props;
+
+  const onChangeHandler = (event) => {
+    onSkills(id, event);
+  }
+
   return (
-    <div className='skills-form'>
-      <input
-        className='skills-form__label'
-        type='text'
-        placeholder='Skill type'
-      />
-      <SkillsInput
-        placeholder={'Skill name'}
-        buttonLabel={'+ Add another'}
-      />
-      <SkillsInput
-        placeholder={'Skill level'}
-        buttonLabel={'Graph'}
-      />
+    <div className='skill'>
+      {fields.map((item, index) => (
+        <SkillInput key={item.id} id={item.id} data={item} onChange={onChangeHandler} />
+      ))}
+      <AddDeleteButtons />
     </div>
   );
 };

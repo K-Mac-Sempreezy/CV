@@ -3,9 +3,9 @@
   min-width: 100rem;
   /* height: 100vh; */
   min-height: 50rem !important;
-  /* height: 2000px; */
+  height: 2000px;
   display: grid;
-  overflow: auto;
+  overflow: visible;
   grid-template-columns: 1fr 1fr;
   grid-gap: 20px;
 }

@@ -1,16 +1,7 @@
-.skills-form {
+.skill {
   display: flex;
   flex-direction: column;
-  padding-bottom: 250px;
-}
-
-.skills-form__label {
-  font-size: 14px;
-  height: 2rem;
-  border-radius: 1rem;
-  border: 0;
-  margin: 0.4rem 0;
-  padding: 0 1rem;
-  outline: none;
+  padding-bottom: 1rem;
   width: 67%;
 }
+

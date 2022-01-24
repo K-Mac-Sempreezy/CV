@@ -6,16 +6,11 @@ import SectionHeading from './SectionHeading';
 import Profile from './Profile';
 import Contact from './Contact';
 import Applicant from './Applicant';
+import SkillSection from './SkillsSection';
 import './ShowResume.css';
 
 const ShowResume = props => {
-  const {
-    personal,
-    profile,
-    experience,
-    education,
-    // skills
-  } = props;
+  const { personal, profile, experience, education, skills } = props;
 
   return (
     <main className='show'>
@@ -39,17 +34,11 @@ const ShowResume = props => {
             icon={'experience'}
             section={'Work Experience'}
           />
-          {experience.map(item => (
+          {experience.map((item, index) => (
             <Experience
               key={item.id}
               id={item.id}
-              startDate={item.startDate || ''}
-              endDate={item.endDate || ''}
-              location={item.location || ''}
-              establishment={item.establishment}
-              title={item.title || ''}
-              name={item.name || ''}
-              bullets={item.highlights}
+              experience={item}
             />
           ))}
         </div>
@@ -60,22 +49,23 @@ const ShowResume = props => {
               icon={'education'}
               section={'Education'}
             />
-            {education.map(item => (
+            {education.map((item, index) => (
               <Education
                 key={item.id}
                 id={item.id}
-                startDate={item.startDate}
-                endDate={item.endDate}
-                location={item.location}
-                establishment={item.establishment}
-                title={item.title}
-                name={item.name}
-                bullets={item.highlights}
+                education={item}
               />
             ))}
           </div>
           <div className='show__skills'>
             <SectionHeading icon={'skills'} section={'Skills'} />
+            {skills.map((item, index) => (
+              <SkillSection
+                key={item.id}
+                id={item.id}
+                skills={item}
+              />
+            ))}
           </div>
         </div>
       </section>

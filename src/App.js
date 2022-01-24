@@ -5,15 +5,14 @@ import { useImmer } from 'use-immer';
 import ShowResume from './components/preview/ShowResume';
 import EditResume from './components/edit/EditResume';
 import Card from './components/elements/UIElements/Card';
-
 import './App.css';
-import { useEffect } from 'react/cjs/react.development';
 
 export const PLACEHOLDERS = {
   highlight: 'Experience highlight',
   additional: 'Optional highlight',
-  profile: 'Add some information about yourself. Show who you are and what you want from your next job.',
-  bulletPoint: 'Add an experience highlight here.'
+  profile:
+    'Add some information about yourself. Show who you are and what you want from your next job.',
+  bulletPoint: 'Add an experience highlight here.',
 };
 
 // const formObject = {
@@ -41,7 +40,41 @@ const App = () => {
       highlights: [],
     },
   ]);
-  // const [skills, setSkills] = useImmer([]);
+  const [skills, setSkills] = useImmer([
+    {
+      component: 'skill',
+      id: uuidv4(),
+      fields: [
+        {
+          component: 'skill-type',
+          id: `skill-type-${uuidv4()}`,
+          type: 'text',
+          placeholder: 'Skill type',
+          button: false,
+        },
+        {
+          component: 'skill-name',
+          id: `skill-name-${uuidv4()}`,
+          type: 'text',
+          placeholder: 'Skill name',
+          button: true,
+          buttonId: `skill-button-${uuidv4()}`,
+          buttonType: 'button',
+          buttonLabel: '+ Add another',
+        },
+        {
+          component: 'skill-level',
+          id: `skill-level-${uuidv4()}`,
+          type: 'text',
+          placeholder: 'Skill level',
+          button: true,
+          buttonId: `skill-level-${uuidv4()}`,
+          buttonType: 'button',
+          buttonLabel: 'Graph it',
+        },
+      ],
+    },
+  ]);
 
   const onPersonalHandler = (key, value) => {
     setPersonal(draft => {
@@ -137,13 +170,22 @@ const App = () => {
     });
   };
 
-  const onSkillsHandler = skillsObject => {
-    // onSkills(skillsObject);
+  const onSkillsHandler = (id, event) => {
+    const elementId = event.target.id;
+    const value = event.target.value;
+    setSkills(draft => {
+      const item = draft.find(item => item.id === id);
+      const field = item.fields.find(
+        subItem => subItem.id === elementId,
+      );
+      if (!field) {
+        return;
+      } else {
+        field.value = value;
+      }
+    });
   };
 
-  useEffect(() => {
-    console.log(experience);
-  }, [experience]);
 
   return (
     <div className='parent'>
@@ -162,6 +204,7 @@ const App = () => {
         onSkills={onSkillsHandler}
         experience={experience}
         education={education}
+        skills={skills}
         placeholder={PLACEHOLDERS}
       />
       <Card className={'resume'}>
@@ -172,7 +215,7 @@ const App = () => {
           experience={experience}
           education={education}
           placeholder={PLACEHOLDERS}
-          // skills={skillsList}
+          skills={skills}
         />
       </Card>
     </div>

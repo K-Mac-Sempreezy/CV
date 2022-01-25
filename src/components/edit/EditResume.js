@@ -18,9 +18,11 @@ const EditResume = props => {
     onEducation,
     onEducationDate,
     onEducationHighlight,
+    onAddEducationHighlight,
     onAddEducation,
     onDeleteEducation,
     onSkills,
+    onAddSkillName,
     experience,
     education,
     skills,
@@ -71,6 +73,10 @@ const EditResume = props => {
     onEducationDate(id, event);
   }
 
+  const onAddEducationHighlightHandler = (id) => {
+    onAddEducationHighlight(id);
+  };
+
   const onAddEducationHandler = () => {
     onAddEducation();
   };
@@ -81,6 +87,10 @@ const EditResume = props => {
 
   const onSkillsHandler = (id, event) => {
     onSkills(id, event);
+  };
+
+  const onAddSkillNameHandler = () => {
+    onAddSkillName();
   };
 
   return (
@@ -121,6 +131,7 @@ const EditResume = props => {
                 key={item.id}
                 id={item.id}
                 elementItem={item}
+                onAddHighlight={onAddEducationHighlightHandler}
                 onHighlight={onEducationHighlightHandler}
                 onDate={onEducationDateHandler}
                 onChange={onEducationHandler}
@@ -139,6 +150,7 @@ const EditResume = props => {
                 id={item.id}
                 skill={item}
                 onSkills={onSkillsHandler}
+                onAddSkillName={onAddSkillNameHandler}
               />
             ))
           : null}

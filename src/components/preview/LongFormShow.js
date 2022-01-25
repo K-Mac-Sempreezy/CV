@@ -16,16 +16,12 @@ const LongFormShow = props => {
     fields = elementItem.fields;
     highlights = elementItem.highlights;
 
-    console.log({fields, highlights})
-
-    
-
     const positionObject = fields.find(
       item => item.label === 'Position',
     );
     if (positionObject.value) {
       title = positionObject.value;
-    } 
+    }
 
     const companyObject = fields.find(
       item => item.label === 'Company',
@@ -33,19 +29,16 @@ const LongFormShow = props => {
     if (companyObject.value) {
       establishment = companyObject.value;
     }
-
   } else if (elementItem.component === 'education') {
     fields = elementItem.fields;
     highlights = elementItem.highlights;
-    console.log({fields, highlights})
-
 
     const degreeObject = fields.find(
       item => item.label === 'Area of study',
     );
     if (degreeObject.value) {
       title = degreeObject.value;
-    } 
+    }
 
     const schoolObject = fields.find(item => item.label === 'School');
     if (schoolObject.value) {
@@ -58,14 +51,13 @@ const LongFormShow = props => {
   );
   if (locationObject.value) {
     location = locationObject.value;
-  } 
+  }
 
-  console.log({title, establishment, location})
   return (
     <div className='longform-preview'>
       <div className='longform-preview__date-location'>
         <DateShow elementItem={elementItem} />
-        <div >{location ? location.toUpperCase() : 'CITY, STATE'}</div>
+        <div>{location ? location.toUpperCase() : 'CITY, STATE'}</div>
       </div>
       <div className='longform-preview__title'>
         {title ? title : 'Position/Area of study'}

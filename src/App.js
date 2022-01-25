@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useImmer } from 'use-immer';
 
@@ -141,30 +141,34 @@ const App = () => {
       fields: [
         {
           component: 'skill-type',
-          id: `skill-type-${uuidv4()}`,
+          id: uuidv4(),
           type: 'text',
-          button: false,
-          value: '',
-        },
-        {
-          component: 'skill-name',
-          id: `skill-name-${uuidv4()}`,
-          type: 'text',
-          button: true,
-          buttonId: `skill-button-${uuidv4()}`,
-          buttonType: 'button',
-          buttonLabel: '+ Add another',
-          value: '',
-        },
-        {
-          component: 'skill-level',
-          id: `skill-level-${uuidv4()}`,
-          type: 'text',
-          button: true,
-          buttonId: `skill-level-${uuidv4()}`,
-          buttonType: 'button',
-          buttonLabel: 'Graph it',
-          value: '',
+          label: 'Skill category',
+          fields: [
+            {
+              component: 'skill-name',
+              id: uuidv4(),
+              type: 'text',
+              label: 'Skill name',
+              button: {
+                id: uuidv4(),
+                type: 'button',
+                label: '+ Add another',
+              },
+              level: {
+                component: 'skill-level',
+                id: uuidv4(),
+                type: 'text',
+                label: 'Level',
+                button: {
+                  id: uuidv4(),
+                  type: 'button',
+                  label: 'Graph it',
+                  graph: false,
+                },
+              },
+            },
+          ],
         },
       ],
     },
@@ -185,7 +189,9 @@ const App = () => {
     const value = event.target.value;
     setExperience(draft => {
       const item = draft.find(item => item.id === id);
-      const field = item.fields.find(subItem => subItem.id === elementId);
+      const field = item.fields.find(
+        subItem => subItem.id === elementId,
+      );
       if (!field) {
         return;
       } else {
@@ -199,13 +205,15 @@ const App = () => {
     const value = event.target.value;
     setExperience(draft => {
       const item = draft.find(item => item.id === id);
-      const field = item.date.find(subItem => subItem.id === elementId);
+      const field = item.date.find(
+        subItem => subItem.id === elementId,
+      );
       if (!field) {
-        return
+        return;
       } else {
         field.value = value;
       }
-    })
+    });
   };
 
   const onExperienceHighlightHandler = (id, event) => {
@@ -219,12 +227,12 @@ const App = () => {
       if (highlight) {
         highlight.value = value;
       } else {
-        return
+        return;
       }
     });
   };
 
-  const onAddExperienceHighlightHandler = (id) => {
+  const onAddExperienceHighlightHandler = id => {
     setExperience(draft => {
       const item = draft.find(item => item.id === id);
       if (item) {
@@ -245,7 +253,7 @@ const App = () => {
       } else {
         return;
       }
-    })
+    });
   };
 
   const onAddExperienceHandler = () => {
@@ -339,13 +347,15 @@ const App = () => {
     const value = event.target.value;
     setEducation(draft => {
       const item = draft.find(item => item.id === id);
-      const field = item.date.find(subItem => subItem.id === elementId);
+      const field = item.date.find(
+        subItem => subItem.id === elementId,
+      );
       if (!field) {
-        return
+        return;
       } else {
         field.value = value;
       }
-    })
+    });
   };
 
   const onAddEducationHandler = () => {
@@ -437,6 +447,30 @@ const App = () => {
     });
   };
 
+  const onAddEducationHighlightHandler = id => {
+    setEducation(draft => {
+      const item = draft.find(item => item.id === id);
+      if (item) {
+        item.highlights.push({
+          component: 'highlight',
+          label: 'Additional highlight',
+          id: uuidv4(),
+          type: 'text',
+          button: [
+            {
+              component: 'button',
+              id: uuidv4(),
+              type: 'button',
+              label: '+ Add another',
+            },
+          ],
+        });
+      } else {
+        return;
+      }
+    });
+  };
+
   const onSkillsHandler = (id, event) => {
     const elementId = event.target.id;
     const value = event.target.value;
@@ -454,8 +488,8 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(experience)
-  }, [experience])
+    console.log(experience);
+  }, [experience]);
 
   return (
     <div className='parent'>
@@ -472,6 +506,7 @@ const App = () => {
         onEducation={onEducationHandler}
         onEducationDate={onEducationDateHandler}
         onAddEducation={onAddEducationHandler}
+        onAddEducationHighlight={onAddEducationHighlightHandler}
         onDeleteEducation={onDeleteEducationHandler}
         onEducationHighlight={onEducationHighlightHandler}
         onSkills={onSkillsHandler}

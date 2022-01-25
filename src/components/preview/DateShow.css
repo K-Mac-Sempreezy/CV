@@ -1,10 +1,4 @@
-.date {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  margin: 0 0.5rem 0 2.1rem;
-  font-size: small;
-}
+
 
 .date__date {
   display: flex;

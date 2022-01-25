@@ -2,12 +2,24 @@
   margin-bottom: 1rem;
 }
 
+.longform-preview__date-location {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  height: 2rem;
+}
+
 .longform-preview__title, 
 .longform-preview__establishment,
-.longform-preview__date {
+.longform-preview__date-location {
   font-size: small;
-  font-weight: bold;
   margin-left: 2.2rem;
+}
+
+.longform-preview__title, 
+.longform-preview__establishment{
+  font-weight: bold;
 }
 
 /* .experience_preview__bullets {

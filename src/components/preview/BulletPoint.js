@@ -9,7 +9,7 @@ const BulletPoint = props => {
     <div className='bullet-point'>
       <div className='bullet-point__point'>•</div>
       <div className='bullet-point__text'>
-        {value ? value : 'PLACEHOLDER'}
+        {value ? value : 'Your highlight here'}
       </div>
     </div>
   );

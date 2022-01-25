@@ -6,15 +6,16 @@ import './LongFormShow.css';
 
 const LongFormShow = props => {
   const { elementItem } = props;
-  let title;
-  let establishment;
-  let location;
-  let fields;
-  let highlights;
+  let title = '';
+  let establishment = '';
+  let location = '';
+  let fields = '';
+  let highlights = '';
 
   if (elementItem.component === 'experience') {
     fields = elementItem.fields;
     highlights = elementItem.highlights;
+
     console.log({fields, highlights})
 
     
@@ -24,18 +25,15 @@ const LongFormShow = props => {
     );
     if (positionObject.value) {
       title = positionObject.value;
-    } else {
-      return;
-    }
+    } 
 
     const companyObject = fields.find(
       item => item.label === 'Company',
     );
     if (companyObject.value) {
       establishment = companyObject.value;
-    } else {
-      return;
     }
+
   } else if (elementItem.component === 'education') {
     fields = elementItem.fields;
     highlights = elementItem.highlights;
@@ -47,15 +45,11 @@ const LongFormShow = props => {
     );
     if (degreeObject.value) {
       title = degreeObject.value;
-    } else {
-      return;
-    }
+    } 
 
     const schoolObject = fields.find(item => item.label === 'School');
     if (schoolObject.value) {
       establishment = schoolObject.value;
-    } else {
-      return;
     }
   }
 
@@ -64,18 +58,15 @@ const LongFormShow = props => {
   );
   if (locationObject.value) {
     location = locationObject.value;
-  } else {
-    return;
-  }
+  } 
 
   console.log({title, establishment, location})
   return (
     <div className='longform-preview'>
-      <DateShow
-        className='longform-preview__date'
-        elementItem={elementItem}
-      />
-      <div>{location ? location.toUpperCase() : 'CITY, STATE'}</div>
+      <div className='longform-preview__date-location'>
+        <DateShow elementItem={elementItem} />
+        <div >{location ? location.toUpperCase() : 'CITY, STATE'}</div>
+      </div>
       <div className='longform-preview__title'>
         {title ? title : 'Position/Area of study'}
       </div>

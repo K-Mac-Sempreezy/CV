@@ -45,7 +45,6 @@ const App = () => {
           label: 'Experience highlight',
           id: uuidv4(),
           type: 'text',
-          // value: 'highlight1',
           button: [
             {
               component: 'button',
@@ -62,21 +61,18 @@ const App = () => {
           label: 'Position',
           type: 'text',
           id: uuidv4(),
-          value: 'ex-f1',
         },
         {
           component: 'text',
           label: 'Company',
           type: 'text',
           id: uuidv4(),
-          value: 'ex-f2',
         },
         {
           component: 'text',
           label: 'Location',
           type: 'text',
           id: uuidv4(),
-          value: 'ex-f3',
         },
       ],
     },
@@ -92,14 +88,12 @@ const App = () => {
           label: 'Start date',
           type: 'date',
           id: uuidv4(),
-          value: 'startDateEd',
         },
         {
           component: 'date',
           label: 'End date',
           type: 'date',
           id: uuidv4(),
-          value: 'EndDateEd',
         },
       ],
       highlights: [
@@ -108,7 +102,6 @@ const App = () => {
           label: 'Education highlight',
           id: uuidv4(),
           type: 'text',
-          value: 'edHL1',
           button: [
             {
               component: 'button',
@@ -125,21 +118,18 @@ const App = () => {
           label: 'Area of study',
           type: 'text',
           id: uuidv4(),
-          value: 'ed-f1',
         },
         {
           component: 'text',
           label: 'School',
           type: 'text',
           id: uuidv4(),
-          value: 'ed-f2',
         },
         {
           component: 'text',
           label: 'Location',
           type: 'text',
           id: uuidv4(),
-          value: 'ed-f3',
         },
       ],
     },
@@ -243,7 +233,6 @@ const App = () => {
           label: 'Additional highlight',
           id: uuidv4(),
           type: 'text',
-          // value: '',
           button: [
             {
               component: 'button',

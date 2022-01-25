@@ -12,4 +12,5 @@
 
 .bullet-point__text {
   width: 95%;
+  max-width: 300px;
 }

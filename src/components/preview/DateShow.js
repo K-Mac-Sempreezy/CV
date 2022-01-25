@@ -31,12 +31,10 @@ const DateShow = props => {
   const endYear = new Date(end).getFullYear();
 
   return (
-    <div className='date'>
-      <div className='date__date'>
-        {start ? `${startMonth}/${startYear}` : 'START DATE'}
-        <div className='date__hyphen'>-</div>
-        <div>{end ? `${endMonth}/${endYear}` : 'END DATE'}</div>
-      </div>
+    <div className='date__date'>
+      {start ? `${startMonth}/${startYear}` : 'START DATE'}
+      <div className='date__hyphen'>-</div>
+      <div>{end ? `${endMonth}/${endYear}` : 'END DATE'}</div>
     </div>
   );
 };

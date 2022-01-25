@@ -1,9 +1,10 @@
-.experience_preview {
+.longform-preview {
   margin-bottom: 1rem;
 }
 
-.experience_preview__title, 
-.experience_preview__establishment {
+.longform-preview__title, 
+.longform-preview__establishment,
+.longform-preview__date {
   font-size: small;
   font-weight: bold;
   margin-left: 2.2rem;

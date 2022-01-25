@@ -1,7 +1,6 @@
 import React from 'react';
 
-import Experience from './Experience';
-import Education from './Education';
+import LongFormShow from './LongFormShow';
 import SectionHeading from './SectionHeading';
 import Profile from './Profile';
 import Contact from './Contact';
@@ -34,13 +33,15 @@ const ShowResume = props => {
             icon={'experience'}
             section={'Work Experience'}
           />
-          {experience.map((item, index) => (
-            <Experience
-              key={item.id}
-              id={item.id}
-              experience={item}
-            />
-          ))}
+          {experience
+            ? experience.map(item => (
+                <LongFormShow
+                  key={item.id}
+                  id={item.id}
+                  elementItem={item}
+                />
+              ))
+            : null}
         </div>
         <hr className='divider__vert' />
         <div className='show__info-right'>
@@ -49,17 +50,19 @@ const ShowResume = props => {
               icon={'education'}
               section={'Education'}
             />
-            {education.map((item, index) => (
-              <Education
-                key={item.id}
-                id={item.id}
-                education={item}
-              />
-            ))}
+            {education
+              ? education.map(item => (
+                  <LongFormShow
+                    key={item.id}
+                    id={item.id}
+                    elementItem={item}
+                  />
+                ))
+              : null}
           </div>
           <div className='show__skills'>
             <SectionHeading icon={'skills'} section={'Skills'} />
-            {skills.map((item, index) => (
+            {skills.map(item => (
               <SkillSection
                 key={item.id}
                 id={item.id}

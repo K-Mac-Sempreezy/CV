@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useImmer } from 'use-immer';
 
@@ -31,14 +31,12 @@ const App = () => {
           label: 'Start date',
           type: 'date',
           id: uuidv4(),
-          value: '',
         },
         {
           component: 'date',
           label: 'End date',
           type: 'date',
           id: uuidv4(),
-          value: '',
         },
       ],
       highlights: [
@@ -47,7 +45,7 @@ const App = () => {
           label: 'Experience highlight',
           id: uuidv4(),
           type: 'text',
-          value: '',
+          // value: 'highlight1',
           button: [
             {
               component: 'button',
@@ -64,21 +62,21 @@ const App = () => {
           label: 'Position',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ex-f1',
         },
         {
           component: 'text',
           label: 'Company',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ex-f2',
         },
         {
           component: 'text',
           label: 'Location',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ex-f3',
         },
       ],
     },
@@ -94,14 +92,14 @@ const App = () => {
           label: 'Start date',
           type: 'date',
           id: uuidv4(),
-          value: '',
+          value: 'startDateEd',
         },
         {
           component: 'date',
           label: 'End date',
           type: 'date',
           id: uuidv4(),
-          value: '',
+          value: 'EndDateEd',
         },
       ],
       highlights: [
@@ -110,7 +108,7 @@ const App = () => {
           label: 'Education highlight',
           id: uuidv4(),
           type: 'text',
-          value: '',
+          value: 'edHL1',
           button: [
             {
               component: 'button',
@@ -127,21 +125,21 @@ const App = () => {
           label: 'Area of study',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ed-f1',
         },
         {
           component: 'text',
-          label: 'School name',
+          label: 'School',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ed-f2',
         },
         {
           component: 'text',
           label: 'Location',
           type: 'text',
           id: uuidv4(),
-          value: '',
+          value: 'ed-f3',
         },
       ],
     },
@@ -193,16 +191,31 @@ const App = () => {
   };
 
   const onExperienceHandler = (id, event) => {
-    const name = event.target.name;
+    const elementId = event.target.id;
     const value = event.target.value;
     setExperience(draft => {
       const item = draft.find(item => item.id === id);
-      if (!item) {
+      const field = item.fields.find(subItem => subItem.id === elementId);
+      if (!field) {
         return;
       } else {
-        item[name] = value;
+        field.value = value;
       }
     });
+  };
+
+  const onExperienceDateHandler = (id, event) => {
+    const elementId = event.target.id;
+    const value = event.target.value;
+    setExperience(draft => {
+      const item = draft.find(item => item.id === id);
+      const field = item.date.find(subItem => subItem.id === elementId);
+      if (!field) {
+        return
+      } else {
+        field.value = value;
+      }
+    })
   };
 
   const onExperienceHighlightHandler = (id, event) => {
@@ -213,13 +226,24 @@ const App = () => {
       const highlight = item.highlights.find(
         subItem => subItem.id === elementId,
       );
-      if (!highlight) {
+      if (highlight) {
+        highlight.value = value;
+      } else {
+        return
+      }
+    });
+  };
+
+  const onAddExperienceHighlightHandler = (id) => {
+    setExperience(draft => {
+      const item = draft.find(item => item.id === id);
+      if (item) {
         item.highlights.push({
           component: 'highlight',
           label: 'Additional highlight',
           id: uuidv4(),
           type: 'text',
-          value: '',
+          // value: '',
           button: [
             {
               component: 'button',
@@ -230,9 +254,9 @@ const App = () => {
           ],
         });
       } else {
-        highlight.text = value;
+        return;
       }
-    });
+    })
   };
 
   const onAddExperienceHandler = () => {
@@ -321,6 +345,20 @@ const App = () => {
     });
   };
 
+  const onEducationDateHandler = (id, event) => {
+    const elementId = event.target.id;
+    const value = event.target.value;
+    setEducation(draft => {
+      const item = draft.find(item => item.id === id);
+      const field = item.date.find(subItem => subItem.id === elementId);
+      if (!field) {
+        return
+      } else {
+        field.value = value;
+      }
+    })
+  };
+
   const onAddEducationHandler = () => {
     setEducation(draft => {
       draft.push({
@@ -370,7 +408,7 @@ const App = () => {
           },
           {
             component: 'text',
-            label: 'School name',
+            label: 'School',
             type: 'text',
             id: uuidv4(),
             value: '',
@@ -426,6 +464,10 @@ const App = () => {
     });
   };
 
+  useEffect(() => {
+    console.log(experience)
+  }, [experience])
+
   return (
     <div className='parent'>
       <EditResume
@@ -433,10 +475,13 @@ const App = () => {
         onPersonal={onPersonalHandler}
         onProfile={onProfileHandler}
         onExperience={onExperienceHandler}
+        onExperienceDate={onExperienceDateHandler}
         onExperienceHighlight={onExperienceHighlightHandler}
+        onAddExperienceHighlight={onAddExperienceHighlightHandler}
         onAddExperience={onAddExperienceHandler}
         onDeleteExperience={onDeleteExperienceHandler}
         onEducation={onEducationHandler}
+        onEducationDate={onEducationDateHandler}
         onAddEducation={onAddEducationHandler}
         onDeleteEducation={onDeleteEducationHandler}
         onEducationHighlight={onEducationHighlightHandler}

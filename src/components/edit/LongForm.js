@@ -4,21 +4,23 @@ import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
 import './LongForm.css';
 
 const LongForm = props => {
-  const {
-    onChange,
-    onHighlight,
-    onDelete,
-    onAdd,
-    id,
-    elementItem,
-  } = props;
+  const { onDate, onChange, onHighlight, onAddHighlight, onDelete, onAdd, id, elementItem } =
+    props;
 
   const onChangeHandler = event => {
-    onChange(event);
+    onChange(id, event);
   };
 
-  const onHighlightHandler = (event) => {
+  const onDateHandler = event => {
+    onDate(id, event)
+  }
+
+  const onHighlightHandler = event => {
     onHighlight(id, event);
+  };
+
+  const onAddHighlightHandler = () => {
+    onAddHighlight(id);
   };
 
   const onDeleteHandler = () => {
@@ -34,15 +36,14 @@ const LongForm = props => {
       <div className='date'>
         {elementItem.date
           ? elementItem.date.map(item => (
-              <div className='date__single'>
+              <div key={item.id} className='date__single'>
                 <label htmlFor={item.id}>{item.label}</label>
                 <input
-                  key={item.id}
                   id={item.id}
+                  component={item.component}
                   type={item.type}
                   name={item.label}
-                  value={item.value}
-                  onChange={onChangeHandler}
+                  onChange={onDateHandler}
                 />
               </div>
             ))
@@ -54,10 +55,10 @@ const LongForm = props => {
               <input
                 key={item.id}
                 id={item.id}
+                component={item.component}
                 type={item.type}
                 name={item.label}
                 placeholder={item.label}
-                value={item.value}
                 onChange={onChangeHandler}
               />
             ))
@@ -65,12 +66,11 @@ const LongForm = props => {
         <React.Fragment>
           {elementItem.highlights
             ? elementItem.highlights.map(item => (
-                <div className='highlight'>
+                <div key={item.id} className='highlight'>
                   <input
-                    key={item.id}
                     id={item.id}
                     type={item.type}
-                    value={item.value}
+                    component={item.component}
                     name={item.label}
                     placeholder={item.label}
                     onChange={onHighlightHandler}
@@ -81,7 +81,7 @@ const LongForm = props => {
                           key={subItem.id}
                           id={subItem.id}
                           type={subItem.type}
-                          onClick={onHighlightHandler}
+                          onClick={onAddHighlightHandler}
                         >
                           {subItem.label}
                         </button>

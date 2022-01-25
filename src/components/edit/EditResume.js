@@ -10,10 +10,13 @@ const EditResume = props => {
     onPersonal,
     onProfile,
     onExperience,
+    onExperienceDate,
     onExperienceHighlight,
+    onAddExperienceHighlight,
     onAddExperience,
     onDeleteExperience,
     onEducation,
+    onEducationDate,
     onEducationHighlight,
     onAddEducation,
     onDeleteEducation,
@@ -36,8 +39,16 @@ const EditResume = props => {
     onExperience(id, event);
   };
 
+  const onExperienceDateHandler = (id, event) => {
+    onExperienceDate(id, event);
+  }
+
   const onExperienceHighlightHandler = (id, event) => {
     onExperienceHighlight(id, event);
+  };
+
+  const onAddExperienceHighlightHandler = (id) => {
+    onAddExperienceHighlight(id);
   };
 
   const onEducationHighlightHandler = (id, event) => {
@@ -55,6 +66,10 @@ const EditResume = props => {
   const onEducationHandler = (id, event) => {
     onEducation(id, event);
   };
+
+  const onEducationDateHandler = (id, event) => {
+    onEducationDate(id, event);
+  }
 
   const onAddEducationHandler = () => {
     onAddEducation();
@@ -89,6 +104,8 @@ const EditResume = props => {
                 id={item.id}
                 elementItem={item}
                 onHighlight={onExperienceHighlightHandler}
+                onAddHighlight={onAddExperienceHighlightHandler}
+                onDate={onExperienceDateHandler}
                 onChange={onExperienceHandler}
                 onAdd={onAddExperienceHandler}
                 onDelete={onDeleteExperienceHandler}
@@ -98,28 +115,33 @@ const EditResume = props => {
       </React.Fragment>
       <div>Education</div>
       <React.Fragment>
-        {education ? education.map(item => (
-          <LongForm
-            key={item.id}
-            id={item.id}
-            elementItem={item}
-            onHighlight={onEducationHighlightHandler}
-            onChange={onEducationHandler}
-            onAdd={onAddEducationHandler}
-            onDelete={onDeleteEducationHandler}
-          />
-        )): null}
+        {education
+          ? education.map(item => (
+              <LongForm
+                key={item.id}
+                id={item.id}
+                elementItem={item}
+                onHighlight={onEducationHighlightHandler}
+                onDate={onEducationDateHandler}
+                onChange={onEducationHandler}
+                onAdd={onAddEducationHandler}
+                onDelete={onDeleteEducationHandler}
+              />
+            ))
+          : null}
       </React.Fragment>
       <div>Skills</div>
       <div>
-        {skills ? skills.map(item => (
-          <SkillsForm
-            key={item.id}
-            id={item.id}
-            skill={item}
-            onSkills={onSkillsHandler}
-          />
-        )): null}
+        {skills
+          ? skills.map(item => (
+              <SkillsForm
+                key={item.id}
+                id={item.id}
+                skill={item}
+                onSkills={onSkillsHandler}
+              />
+            ))
+          : null}
       </div>
     </div>
   );

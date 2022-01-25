@@ -1,6 +1,5 @@
 import React from 'react';
 
-import { PLACEHOLDERS } from '../../App';
 import './BulletPoint.css';
 
 const BulletPoint = props => {
@@ -10,7 +9,7 @@ const BulletPoint = props => {
     <div className='bullet-point'>
       <div className='bullet-point__point'>•</div>
       <div className='bullet-point__text'>
-        {text ? text : PLACEHOLDERS.bulletPoint}
+        {text ? text : 'PLACEHOLDER'}
       </div>
     </div>
   );

@@ -12,6 +12,7 @@ const SkillInput = props => {
     button,
     buttonType,
     buttonLabel,
+    value
   } = props.data;
 
   const {onChange} = props;
@@ -30,6 +31,7 @@ const SkillInput = props => {
         id={id}
         type={type}
         placeholder={placeholder}
+        value={value}
         onChange={onChangeHandler}
       />
       {button ? (

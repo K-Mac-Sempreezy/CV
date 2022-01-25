@@ -7,14 +7,6 @@ import EditResume from './components/edit/EditResume';
 import Card from './components/elements/UIElements/Card';
 import './App.css';
 
-export const PLACEHOLDERS = {
-  highlight: 'Experience highlight',
-  additional: 'Optional highlight',
-  profile:
-    'Add some information about yourself. Show who you are and what you want from your next job.',
-  bulletPoint: 'Add an experience highlight here.',
-};
-
 // const formObject = {
 //   id: uuidv4(),
 // startDate: '',
@@ -30,14 +22,128 @@ const App = () => {
   const [profile, setProfile] = useImmer('');
   const [experience, setExperience] = useImmer([
     {
+      component: 'experience',
       id: uuidv4(),
-      highlights: [],
+      label: 'Experience',
+      date: [
+        {
+          component: 'date',
+          label: 'Start date',
+          type: 'date',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'date',
+          label: 'End date',
+          type: 'date',
+          id: uuidv4(),
+          value: '',
+        },
+      ],
+      highlights: [
+        {
+          component: 'highlight',
+          label: 'Experience highlight',
+          id: uuidv4(),
+          type: 'text',
+          value: '',
+          button: [
+            {
+              component: 'button',
+              id: uuidv4(),
+              type: 'button',
+              label: '+ Add another',
+            },
+          ],
+        },
+      ],
+      fields: [
+        {
+          component: 'text',
+          label: 'Position',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'text',
+          label: 'Company',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'text',
+          label: 'Location',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+      ],
     },
   ]);
   const [education, setEducation] = useImmer([
     {
+      component: 'education',
       id: uuidv4(),
-      highlights: [],
+      label: 'Education',
+      date: [
+        {
+          component: 'date',
+          label: 'Start date',
+          type: 'date',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'date',
+          label: 'End date',
+          type: 'date',
+          id: uuidv4(),
+          value: '',
+        },
+      ],
+      highlights: [
+        {
+          component: 'highlight',
+          label: 'Education highlight',
+          id: uuidv4(),
+          type: 'text',
+          value: '',
+          button: [
+            {
+              component: 'button',
+              id: uuidv4(),
+              type: 'button',
+              label: '+ Add another',
+            },
+          ],
+        },
+      ],
+      fields: [
+        {
+          component: 'text',
+          label: 'Area of study',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'text',
+          label: 'School name',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+        {
+          component: 'text',
+          label: 'Location',
+          type: 'text',
+          id: uuidv4(),
+          value: '',
+        },
+      ],
     },
   ]);
   const [skills, setSkills] = useImmer([
@@ -49,28 +155,28 @@ const App = () => {
           component: 'skill-type',
           id: `skill-type-${uuidv4()}`,
           type: 'text',
-          placeholder: 'Skill type',
           button: false,
+          value: '',
         },
         {
           component: 'skill-name',
           id: `skill-name-${uuidv4()}`,
           type: 'text',
-          placeholder: 'Skill name',
           button: true,
           buttonId: `skill-button-${uuidv4()}`,
           buttonType: 'button',
           buttonLabel: '+ Add another',
+          value: '',
         },
         {
           component: 'skill-level',
           id: `skill-level-${uuidv4()}`,
           type: 'text',
-          placeholder: 'Skill level',
           button: true,
           buttonId: `skill-level-${uuidv4()}`,
           buttonType: 'button',
           buttonLabel: 'Graph it',
+          value: '',
         },
       ],
     },
@@ -108,7 +214,21 @@ const App = () => {
         subItem => subItem.id === elementId,
       );
       if (!highlight) {
-        item.highlights.push({ id: elementId, text: value });
+        item.highlights.push({
+          component: 'highlight',
+          label: 'Additional highlight',
+          id: uuidv4(),
+          type: 'text',
+          value: '',
+          button: [
+            {
+              component: 'button',
+              id: uuidv4(),
+              type: 'button',
+              label: '+ Add another',
+            },
+          ],
+        });
       } else {
         highlight.text = value;
       }
@@ -117,7 +237,67 @@ const App = () => {
 
   const onAddExperienceHandler = () => {
     setExperience(draft => {
-      draft.push({ id: uuidv4(), highlights: [] });
+      draft.push({
+        component: 'experience',
+        id: uuidv4(),
+        label: 'Experience',
+        date: [
+          {
+            component: 'date',
+            label: 'Start date',
+            type: 'date',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'date',
+            label: 'End date',
+            type: 'date',
+            id: uuidv4(),
+            value: '',
+          },
+        ],
+        highlights: [
+          {
+            component: 'highlight',
+            label: 'Experience highlight',
+            id: uuidv4(),
+            type: 'text',
+            value: '',
+            button: [
+              {
+                component: 'button',
+                id: uuidv4(),
+                type: 'button',
+                label: '+ Add another',
+              },
+            ],
+          },
+        ],
+        fields: [
+          {
+            component: 'text',
+            label: 'Position',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'text',
+            label: 'Company',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'text',
+            label: 'Location',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+        ],
+      });
     });
   };
 
@@ -143,7 +323,67 @@ const App = () => {
 
   const onAddEducationHandler = () => {
     setEducation(draft => {
-      draft.push({ id: uuidv4(), highlights: [] });
+      draft.push({
+        component: 'education',
+        id: uuidv4(),
+        label: 'Education',
+        date: [
+          {
+            component: 'date',
+            label: 'Start date',
+            type: 'date',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'date',
+            label: 'End date',
+            type: 'date',
+            id: uuidv4(),
+            value: '',
+          },
+        ],
+        highlights: [
+          {
+            component: 'highlight',
+            label: 'Education highlight',
+            id: uuidv4(),
+            type: 'text',
+            value: '',
+            button: [
+              {
+                component: 'button',
+                id: uuidv4(),
+                type: 'button',
+                label: '+ Add another',
+              },
+            ],
+          },
+        ],
+        fields: [
+          {
+            component: 'text',
+            label: 'Area of study',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'text',
+            label: 'School name',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+          {
+            component: 'text',
+            label: 'Location',
+            type: 'text',
+            id: uuidv4(),
+            value: '',
+          },
+        ],
+      });
     });
   };
 
@@ -186,7 +426,6 @@ const App = () => {
     });
   };
 
-
   return (
     <div className='parent'>
       <EditResume
@@ -205,7 +444,6 @@ const App = () => {
         experience={experience}
         education={education}
         skills={skills}
-        placeholder={PLACEHOLDERS}
       />
       <Card className={'resume'}>
         <ShowResume
@@ -214,7 +452,6 @@ const App = () => {
           profile={profile}
           experience={experience}
           education={education}
-          placeholder={PLACEHOLDERS}
           skills={skills}
         />
       </Card>

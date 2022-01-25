@@ -15,7 +15,7 @@ const SkillsForm = props => {
   return (
     <div className='skill'>
       {fields.map((item, index) => (
-        <SkillInput key={item.id} id={item.id} data={item} onChange={onChangeHandler} />
+        <SkillInput key={item.id} id={item.id} data={item} value={item.value} onChange={onChangeHandler} />
       ))}
       <AddDeleteButtons />
     </div>

@@ -31,10 +31,10 @@ const LongForm = props => {
 
   return (
     <div className='long'>
-      <div className='long-date'>
+      <div className='date'>
         {elementItem.date
-          ? elementItem.date.map((item, index) => (
-              <div className='long-date__single'>
+          ? elementItem.date.map(item => (
+              <div className='date__single'>
                 <label htmlFor={item.id}>{item.label}</label>
                 <input
                   key={item.id}
@@ -48,9 +48,9 @@ const LongForm = props => {
             ))
           : null}
       </div>
-      <div className='long-fields'>
+      <div className='fields'>
         {elementItem.fields
-          ? elementItem.fields.map((item, index) => (
+          ? elementItem.fields.map(item => (
               <input
                 key={item.id}
                 id={item.id}
@@ -64,8 +64,8 @@ const LongForm = props => {
           : null}
         <React.Fragment>
           {elementItem.highlights
-            ? elementItem.highlights.map((item, index) => (
-                <div className='long-highlight'>
+            ? elementItem.highlights.map(item => (
+                <div className='highlight'>
                   <input
                     key={item.id}
                     id={item.id}

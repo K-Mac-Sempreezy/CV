@@ -5,7 +5,7 @@
   justify-content: flex-start;
 }
 
-.long-date {  
+.date {  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -16,7 +16,7 @@
   outline: 0;
 }
 
-.long-date__single {  
+.date__single {  
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -27,21 +27,21 @@
   background: white;
 }
 
-.long-date__single  label {
+.date__single  label {
   color: rgb(98, 98, 98);
   font-size: 14px;
   min-width: 6rem;
   padding-left: 0.4rem;
 }
 
-.long-date__single input {
+.date__single input {
   border: 0;
   padding-right: 1rem;
   background: white;
   outline: 0;
 }
 
-.long-fields input {
+.fields input {
   width: 100%;
   font-size: 14px;
   border: 0;
@@ -53,7 +53,7 @@
   outline: none;
 }
 
-.long-highlight {
+.highlight {
   position: relative;
   display: flex;
   flex-direction: row;
@@ -62,7 +62,7 @@
   background: 0;
 }
 
-.long-highlight button {
+.highlight button {
   color: gray;
   font-size: 14px;
   position: absolute;
@@ -71,6 +71,6 @@
   border: 0;
 }
 
-.long-highlight button:hover {
+.highlight button:hover {
   color: rgb(71, 182, 216);
 }

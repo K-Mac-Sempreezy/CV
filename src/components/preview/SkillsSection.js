@@ -6,14 +6,15 @@ import './SkillsSection.css';
 
 const SkillsSection = props => {
 
-  const {fields} = props.skills;
+  // console.log(props.skills);
+  const {fields} = props.skills; //one skill type here
 
   return (
     <div className='skills-section'>
-      <SkillHeading />
+      <SkillHeading data={props} />
       {fields
-        ? fields.map((item, index) => (
-            <SkillNameLevel key={item.id} id={item.id} skill={item} />
+        ? fields.map(item => (
+            <SkillNameLevel key={item.id} id={item.id} data={item} />
           ))
         : null}
     </div>

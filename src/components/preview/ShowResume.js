@@ -5,7 +5,7 @@ import SectionHeading from './SectionHeading';
 import Profile from './Profile';
 import Contact from './Contact';
 import Applicant from './Applicant';
-import SkillSection from './SkillsSection';
+import SkillsSection from './SkillsSection';
 import './ShowResume.css';
 
 const ShowResume = props => {
@@ -62,8 +62,8 @@ const ShowResume = props => {
           </div>
           <div className='show__skills'>
             <SectionHeading icon={'skills'} section={'Skills'} />
-            {skills.map(item => (
-              <SkillSection
+            {skills.map(item => ( //item === skill-type
+              <SkillsSection
                 key={item.id}
                 id={item.id}
                 skills={item}

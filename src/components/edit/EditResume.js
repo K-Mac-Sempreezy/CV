@@ -21,8 +21,13 @@ const EditResume = props => {
     onAddEducationHighlight,
     onAddEducation,
     onDeleteEducation,
-    onSkills,
     onAddSkillName,
+    onSkillsLevelChange,
+    onSkillsNameChange,
+    onGraphButton,
+    onSkillType,
+    onAddSkillForm,
+    onDeleteSkillForm,
     experience,
     education,
     skills,
@@ -85,12 +90,32 @@ const EditResume = props => {
     onDeleteEducation(id);
   };
 
-  const onSkillsHandler = (id, event) => {
-    onSkills(id, event);
+  const onAddSkillNameHandler = (skillId) => {
+    onAddSkillName(skillId);
   };
 
-  const onAddSkillNameHandler = () => {
-    onAddSkillName();
+  const onGraphButtonHandler = (skillId, nameId) => {
+    onGraphButton(skillId, nameId);
+  };
+
+  const onSkillsNameChangeHandler = (skillId, event) => {
+    onSkillsNameChange(skillId, event);
+  }
+ 
+  const onSkillsLevelChangeHandler = (skillId, nameId, event) => {
+    onSkillsLevelChange(skillId, nameId, event);
+  };
+  
+  const onSkillTypeHandler = (event) => {
+    onSkillType(event);
+  };
+
+  const onAddSkillFormHandler = () => {
+    onAddSkillForm();
+  };
+
+  const onDeleteSkillFormHandler = (skillId) => {
+    onDeleteSkillForm(skillId);
   };
 
   return (
@@ -144,13 +169,18 @@ const EditResume = props => {
       <div>Skills</div>
       <div>
         {skills
-          ? skills.map(item => (
+          ? skills.map(item => ( //through skillTypes
               <SkillsForm
                 key={item.id}
-                id={item.id}
-                skill={item}
-                onSkills={onSkillsHandler}
+                id={item.id} //skillTypeId
+                skilltype={item}
+                onGraphButton={onGraphButtonHandler}
+                onSkillType={onSkillTypeHandler}
+                onSkillsLevelChange={onSkillsLevelChangeHandler}
+                onSkillsNameChange={onSkillsNameChangeHandler}
                 onAddSkillName={onAddSkillNameHandler}
+                onAddForm={onAddSkillFormHandler}
+                onDeleteForm={onDeleteSkillFormHandler}
               />
             ))
           : null}

@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import { v4 as uuidv4 } from 'uuid';
 import { useImmer } from 'use-immer';
 
@@ -136,44 +136,38 @@ const App = () => {
   ]);
   const [skills, setSkills] = useImmer([
     {
-      component: 'skill',
+      component: 'skill-type',
       id: uuidv4(),
+      type: 'text',
+      label: 'Skill category',
       fields: [
         {
-          component: 'skill-type',
+          component: 'skill-name',
           id: uuidv4(),
           type: 'text',
-          label: 'Skill category',
-          fields: [
-            {
-              component: 'skill-name',
+          label: 'Skill name',
+          button: {
+            id: uuidv4(),
+            type: 'button',
+            label: '+ Add another',
+          },
+          level: {
+            component: 'skill-level',
+            id: uuidv4(),
+            type: 'text',
+            label: 'Level',
+            isGraph: false,
+            button: {
               id: uuidv4(),
-              type: 'text',
-              label: 'Skill name',
-              button: {
-                id: uuidv4(),
-                type: 'button',
-                label: '+ Add another',
-              },
-              level: {
-                component: 'skill-level',
-                id: uuidv4(),
-                type: 'text',
-                label: 'Level',
-                button: {
-                  id: uuidv4(),
-                  type: 'button',
-                  label: 'Graph it',
-                  graph: false,
-                },
-              },
+              type: 'button',
+              label: 'Graph it',
             },
-          ],
+          },
         },
       ],
     },
   ]);
-
+  
   const onPersonalHandler = (key, value) => {
     setPersonal(draft => {
       draft[key] = value;
@@ -471,26 +465,128 @@ const App = () => {
     });
   };
 
-  const onSkillsHandler = (id, event) => {
+  const onSkillTypeHandler = (event) => {
+    const elementId = event.target.id; //skillTypeId
+    const value = event.target.value;
+    setSkills(draft => {
+      const skillType = draft.find(item => item.id === elementId);
+      skillType.value = value;
+      console.log(`${skillType.value}-skill-type`)
+    })
+  };
+
+  const onSkillsNameChangeHandler = (skillId, event) => {
     const elementId = event.target.id;
     const value = event.target.value;
     setSkills(draft => {
-      const item = draft.find(item => item.id === id);
-      const field = item.fields.find(
-        subItem => subItem.id === elementId,
+      const skillType = draft.find(item => item.id === skillId);
+      const skillName = skillType.fields.find(
+        subitem => subitem.id === elementId,
       );
-      if (!field) {
-        return;
-      } else {
-        field.value = value;
-      }
+      skillName.value = value;
+      console.log(`${skillName.value}-skillname`);
+    })
+  };
+
+  const onAddSkillNameHandler = (skillId) => {
+    setSkills(draft => {
+      const skillType = draft.find(
+        item => item.id === skillId,
+      );
+      skillType.fields.push({
+        component: 'skill-name',
+        id: uuidv4(),
+        type: 'text',
+        label: 'Skill name',
+        button: {
+          id: uuidv4(),
+          type: 'button',
+          label: '+ Add another',
+        },
+        level: {
+          component: 'skill-level',
+          id: uuidv4(),
+          type: 'text',
+          label: 'Level',
+          graph: false,
+          button: {
+            id: uuidv4(),
+            type: 'button',
+            label: 'Graph it',
+          },
+        },
+      });
     });
   };
 
-  useEffect(() => {
-    console.log(experience);
-  }, [experience]);
+  const onGraphButtonHandler = (skillId, nameId) => {
+    setSkills(draft => {
+      const skillType = draft.find(item => item.id === skillId);
+      const skillName = skillType.fields.find(
+        subItem => subItem.id === nameId,
+        );
+        console.log(skillName)
+      skillName.level['isGraph'] = !skillName.level['isGraph'];
+      console.log(skillName.level['isGraph'])
+    });
+  };
 
+  const onSkillsLevelChangeHandler = (skillId, nameId, event) => {
+    const value = event.target.value;
+    setSkills(draft => {
+      const skillType = draft.find(item => item.id === skillId);
+      const skillName = skillType.fields.find(
+        subItem => subItem.id === nameId,
+      );
+      skillName.level['value'] = value;
+      console.log(`${skillName.level['value']}-skill-level`)
+    });
+  };
+
+  const onAddSkillFormHandler = () => {
+    setSkills(prevSkills =>
+      [...prevSkills, {
+        component: 'skill-type',
+        id: uuidv4(),
+        type: 'text',
+        label: 'Skill category',
+        fields: [
+          {
+            component: 'skill-name',
+            id: uuidv4(),
+            type: 'text',
+            label: 'Skill name',
+            button: {
+              id: uuidv4(),
+              type: 'button',
+              label: '+ Add another',
+            },
+            level: {
+              component: 'skill-level',
+              id: uuidv4(),
+              type: 'text',
+              label: 'Level',
+              isGraph: false,
+              button: {
+                id: uuidv4(),
+                type: 'button',
+                label: 'Graph it',
+              },
+            },
+          },
+        ],
+      }],
+    );
+  };
+
+  const onDeleteSkillFormHandler = skillId => {
+    if (skills.length === 1) {
+      return;
+    }
+    setSkills(draft => draft.filter(item => item.id !== skillId));
+  };
+
+    
   return (
     <div className='parent'>
       <EditResume
@@ -509,7 +605,13 @@ const App = () => {
         onAddEducationHighlight={onAddEducationHighlightHandler}
         onDeleteEducation={onDeleteEducationHandler}
         onEducationHighlight={onEducationHighlightHandler}
-        onSkills={onSkillsHandler}
+        onSkillsNameChange={onSkillsNameChangeHandler}
+        onSkillsLevelChange={onSkillsLevelChangeHandler}
+        onAddSkillName={onAddSkillNameHandler}
+        onSkillType={onSkillTypeHandler}
+        onAddSkillForm={onAddSkillFormHandler}
+        onDeleteSkillForm={onDeleteSkillFormHandler}
+        onGraphButton={onGraphButtonHandler}
         experience={experience}
         education={education}
         skills={skills}

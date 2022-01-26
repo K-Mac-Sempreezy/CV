@@ -1,1 +1,10 @@
-/* .skill-name-level {} */
+.skill-name-level {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.skill-name-level__name, 
+.skill-name-level__level {
+  width: 50%;
+}

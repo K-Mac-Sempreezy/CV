@@ -1,1 +1,9 @@
-/* .skill-heading {} */
+.skill-heading {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  
+}
+.skill-heading__hyphen {
+  margin-right: 1rem;
+}

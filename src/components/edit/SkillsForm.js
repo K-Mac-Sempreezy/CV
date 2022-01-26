@@ -1,72 +1,82 @@
 import React from 'react';
 
 import AddDeleteButtons from '../elements/FormElements/AddDeleteButtons';
+import SkillInput from '../elements/FormElements/SkillInput';
 import './SkillsForm.css';
 
 const SkillsForm = props => {
-  const { fields } = props.skill;
-  const { onSkills, onAddSkill, id } = props;
+  const { fields, type, id: skillId, label } = props.skilltype;
+  const {
+    onSkillsNameChange,
+    onSkillsLevelChange,
+    onSkillType,
+    onGraphButton,
+    onAddSkillName,
+    onAddForm,
+    onDeleteForm
+  } = props;
 
-  const skillType = fields.find(
-    item => item.component === 'skill-type',
-  );
-  const skillNames = skillType.fields.filter(
+  const skillNames = fields.filter(
     item => item.component === 'skill-name',
   );
-  console.log(typeof skillNames);
 
-  const onChangeHandler = event => {
-    onSkills(id, event);
+  const onSkillTypeChangeHandler = (event) => {
+    onSkillType(event);
+  }
+
+  const onNameChangeHandler = event => {
+    onSkillsNameChange(skillId, event);
+  };
+  
+  const onSkillNameButtonHandler = () => {
+    onAddSkillName(skillId);
   };
 
-  const onSkillNameButtonHandler = () => {
-    onAddSkill(skillType.id);
+  const onLevelChangeHandler = (nameId, event) => {
+    onSkillsLevelChange(skillId, nameId, event)
+  }
+
+  const onGraphHandler = (nameId) => {
+    onGraphButton(skillId, nameId);
+  };
+
+  const onAddFormHandler = () => {
+    onAddForm();
+  };
+
+  const onDeleteFormHandler = () => {
+    onDeleteForm(skillId);
   };
 
   return (
     <div className='skill'>
       <div className='skill-type'>
         <input
-          type={skillType.type}
-          id={skillType.id}
-          placeholder={skillType.label}
+          type={type}
+          id={skillId}
+          placeholder={label}
+          onChange={onSkillTypeChangeHandler}
         />
-        {skillNames
-          ? skillNames.map(item => (
-              <div key={item.id}>
-                <div className='skill-input-container'>
-                  <input
-                    key={item.id}
-                    id={item.id}
-                    type={item.type}
-                    placeholder={item.label}
-                  />
-                  <button
-                    id={item.button.id}
-                    type={item.button.type}
-                    onClick={onSkillNameButtonHandler}
-                  >
-                    {item.button.label}
-                  </button>
-                </div>
-                <div className='skill-input-container'>
-                  <input
-                    id={item.level.id}
-                    type={item.level.type}
-                    placeholder={item.level.label}
-                  />
-                  <button
-                    id={item.level.button.id}
-                    type={item.level.button.type}
-                  >
-                    {item.level.button.label}
-                  </button>
-                </div>
-              </div>
-            ))
-          : null}
+        <div>
+          {skillNames &&
+            skillNames.map(item => (
+              <SkillInput
+                key={item.id}
+                id={item.id}
+                data={item}
+                onName={onNameChangeHandler}
+                onAddName={onSkillNameButtonHandler}
+                onGraph={onGraphHandler}
+                onLevel={onLevelChangeHandler}
+              />
+            ))}
+        </div>
       </div>
-      <AddDeleteButtons />
+      <AddDeleteButtons
+        id={skillId}
+        onAdd={onAddFormHandler}
+        onDelete={onDeleteFormHandler}
+      />
     </div>
   );
 };

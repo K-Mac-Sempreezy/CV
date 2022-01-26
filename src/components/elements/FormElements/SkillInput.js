@@ -3,45 +3,58 @@ import React from 'react';
 import './SkillInput.css';
 
 const SkillInput = props => {
+  const { onAddName, onGraph, onName, onLevel, id: nameId } = props;
+  const { type, label, button, level } = props.data;
 
-  const {
-    id,
-    type,
-    placeholder,
-    buttonId,
-    button,
-    buttonType,
-    buttonLabel
-  } = props.data;
-
-  const {onChange} = props;
-
-  const onChangeHandler = (event) => {
-    onChange(event);
+  const onNameChangeHandler = event => {
+    onName(event);
   };
 
-  const onClickHandler = () => {
-    console.log('Skill button clicked!');
+  const onAddNameHandler = () => {
+    onAddName();
+  };
+
+  const onLevelChangeHandler = event => {
+    onLevel(nameId, event);
+  };
+
+  const onGraphButtonHandler = () => {
+    onGraph(nameId);
   };
 
   return (
-    <div className='skill-input'>
-      <input
-        id={id}
-        type={type}
-        placeholder={placeholder}
-        onChange={onChangeHandler}
-      />
-      {button ? (
+    <React.Fragment>
+      <div className='skill-input'>
+        <input
+          id={nameId}
+          type={type}
+          placeholder={label}
+          onChange={onNameChangeHandler}
+        />
         <button
-          id={buttonId}
-          type={buttonType}
-          onClick={onClickHandler}
+          id={button.id}
+          type={button.type}
+          onClick={onAddNameHandler}
         >
-          {buttonLabel}
+          {button.label}
         </button>
-      ) : null}
-    </div>
+      </div>
+      <div className='skill-input'>
+        <input
+          id={level.id}
+          type={level.type}
+          placeholder={level.label}
+          onChange={onLevelChangeHandler}
+        />
+        <button
+          id={level.button.id}
+          type={level.button.type}
+          onClick={onGraphButtonHandler}
+        >
+          {level.button.label}
+        </button>
+      </div>
+    </React.Fragment>
   );
 };
 

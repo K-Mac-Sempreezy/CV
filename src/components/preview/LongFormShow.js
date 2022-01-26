@@ -11,8 +11,10 @@ const LongFormShow = props => {
   let location = '';
   let fields = '';
   let highlights = '';
+  let experience;
 
   if (elementItem.component === 'experience') {
+    experience = true;
     fields = elementItem.fields;
     highlights = elementItem.highlights;
 
@@ -30,6 +32,7 @@ const LongFormShow = props => {
       establishment = companyObject.value;
     }
   } else if (elementItem.component === 'education') {
+    experience = false;
     fields = elementItem.fields;
     highlights = elementItem.highlights;
 
@@ -59,11 +62,15 @@ const LongFormShow = props => {
         <DateShow elementItem={elementItem} />
         <div>{location ? location.toUpperCase() : 'CITY, STATE'}</div>
       </div>
-      <div className='longform-preview__title'>
-        {title ? title : 'Position/Area of study'}
-      </div>
-      <div className='longform-preview__establishment'>
-        {establishment ? establishment : 'Workplace/School'}
+      <div className='longform-preview__container'>
+        <div className='longform-preview__title'>
+          {experience && (title ? title : 'Position')}
+          {!experience && (title ? title : 'Area of study')}
+        </div>
+        <div className='longform-preview__establishment'>
+          {experience && (establishment ? establishment : 'Company')}
+          {!experience && (establishment ? establishment : 'School')}
+        </div>
       </div>
       {highlights
         ? highlights.map(item => (

@@ -1,5 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;500;700;900&family=Noto+Serif:wght@700&display=swap');
+
 .longform-preview {
   margin-bottom: 1rem;
+}
+
+.longform-preview__container {
+  margin-bottom: 0.2rem;
 }
 
 .longform-preview__date-location {
@@ -7,26 +13,21 @@
   flex-direction: row;
   align-items: center;
   justify-content: space-between;
-  height: 2rem;
+  margin: 0 0 0.1rem 2.2rem;
+  height: 1rem;
+  font-size: 0.65rem;
+  font-family: 'Noto Serif JP', serif;
+  font-weight: 500;
+  color: rgb(22, 22, 22);
+  letter-spacing: 0.025rem;
 }
 
 .longform-preview__title, 
-.longform-preview__establishment,
-.longform-preview__date-location {
-  font-size: small;
-  margin-left: 2.2rem;
-}
-
-.longform-preview__title, 
-.longform-preview__establishment{
+.longform-preview__establishment {
+  font-family: 'Noto Serif', serif;
+  font-size: 0.95rem;
   font-weight: bold;
+  color: black;
+  margin-left: 2.2rem;
+  height: 1rem;
 }
-
-/* .experience_preview__bullets {
-  font-size: small;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: flex-start;
-  
-} */

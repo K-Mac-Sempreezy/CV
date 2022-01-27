@@ -4,6 +4,10 @@ display: flex;
 align-items: center;
 }
 
+.skill-input__inputs-container {
+  margin: 0.5rem 0;
+}
+
 .skill-input input {
   font-size: 14px;
   height: 2rem;

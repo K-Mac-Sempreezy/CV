@@ -2,9 +2,23 @@
   display: flex;
   flex-direction: row;
   align-items: center;
+  width: 100%;
 }
 
 .skill-name-level__name, 
 .skill-name-level__level {
   width: 50%;
+  font-size: small;
+  color: rgb(68, 68, 68);
+}
+
+.skill-name-level__graph {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  width: 50%;
+  height: 0.5rem;
+  background: rgb(110, 110, 110);
+  color: rgba(255, 255, 255, 0);
+  margin-bottom: -0.25rem;
 }

@@ -57,7 +57,7 @@ const SkillsForm = props => {
           placeholder={label}
           onChange={onSkillTypeChangeHandler}
         />
-        <div>
+        <div className='skill__inputs'>
           {skillNames &&
             skillNames.map(item => (
               <SkillInput

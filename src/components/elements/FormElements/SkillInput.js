@@ -23,7 +23,7 @@ const SkillInput = props => {
   };
 
   return (
-    <React.Fragment>
+    <div className='skill-input__inputs-container'>
       <div className='skill-input'>
         <input
           id={nameId}
@@ -44,6 +44,8 @@ const SkillInput = props => {
           id={level.id}
           type={level.type}
           placeholder={level.label}
+          min='0'
+          max='100'
           onChange={onLevelChangeHandler}
         />
         <button
@@ -54,7 +56,7 @@ const SkillInput = props => {
           {level.button.label}
         </button>
       </div>
-    </React.Fragment>
+    </div>
   );
 };
 

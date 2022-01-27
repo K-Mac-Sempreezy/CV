@@ -167,7 +167,7 @@ const App = () => {
       ],
     },
   ]);
-  
+
   const onPersonalHandler = (key, value) => {
     setPersonal(draft => {
       draft[key] = value;
@@ -465,14 +465,14 @@ const App = () => {
     });
   };
 
-  const onSkillTypeHandler = (event) => {
+  const onSkillTypeHandler = event => {
     const elementId = event.target.id; //skillTypeId
     const value = event.target.value;
     setSkills(draft => {
       const skillType = draft.find(item => item.id === elementId);
       skillType.value = value;
-      console.log(`${skillType.value}-skill-type`)
-    })
+      console.log(`${skillType.value}-skill-type`);
+    });
   };
 
   const onSkillsNameChangeHandler = (skillId, event) => {
@@ -485,14 +485,12 @@ const App = () => {
       );
       skillName.value = value;
       console.log(`${skillName.value}-skillname`);
-    })
+    });
   };
 
-  const onAddSkillNameHandler = (skillId) => {
+  const onAddSkillNameHandler = skillId => {
     setSkills(draft => {
-      const skillType = draft.find(
-        item => item.id === skillId,
-      );
+      const skillType = draft.find(item => item.id === skillId);
       skillType.fields.push({
         component: 'skill-name',
         id: uuidv4(),
@@ -524,10 +522,21 @@ const App = () => {
       const skillType = draft.find(item => item.id === skillId);
       const skillName = skillType.fields.find(
         subItem => subItem.id === nameId,
-        );
-        console.log(skillName)
-      skillName.level['isGraph'] = !skillName.level['isGraph'];
-      console.log(skillName.level['isGraph'])
+      );
+      console.log(skillName);
+      if (skillName.level['isGraph'] === false) {
+        skillName.level['isGraph'] = true;
+        skillName.level['type'] = 'number';
+        skillName.level['label'] = 'Level %';
+        skillName.level['button']['label'] = 'Word it';
+      } else {
+        skillName.level['isGraph'] = false;
+        skillName.level['type'] = 'text';
+        skillName.level['label'] = 'Level';
+        skillName.level['button']['label'] = 'Graph it';
+      }
+
+      console.log(skillName.level['isGraph']);
     });
   };
 
@@ -539,13 +548,14 @@ const App = () => {
         subItem => subItem.id === nameId,
       );
       skillName.level['value'] = value;
-      console.log(`${skillName.level['value']}-skill-level`)
+      console.log(`${skillName.level['value']}-skill-level`);
     });
   };
 
   const onAddSkillFormHandler = () => {
-    setSkills(prevSkills =>
-      [...prevSkills, {
+    setSkills(prevSkills => [
+      ...prevSkills,
+      {
         component: 'skill-type',
         id: uuidv4(),
         type: 'text',
@@ -575,8 +585,8 @@ const App = () => {
             },
           },
         ],
-      }],
-    );
+      },
+    ]);
   };
 
   const onDeleteSkillFormHandler = skillId => {
@@ -586,7 +596,6 @@ const App = () => {
     setSkills(draft => draft.filter(item => item.id !== skillId));
   };
 
-    
   return (
     <div className='parent'>
       <EditResume
